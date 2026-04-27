@@ -77,8 +77,37 @@
   .nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left center}
   .nav a.nav-cta{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;background:var(--ink-deep);color:var(--paper) !important;padding:12px 22px;border:1px solid var(--ink-deep);transition:all .55s cubic-bezier(.22,1,.36,1);margin-left:12px;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center}
   .nav a.nav-cta:hover{background:var(--hu-red-dark);border-color:var(--hu-red-dark);color:var(--paper) !important}
-  .nav-burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:8px;justify-self:end}
-  .nav-burger span{display:block;width:26px;height:2px;background:var(--ink);transition:all .3s var(--easing)}
+  .nav-burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:8px;justify-self:end;z-index:60}
+  .nav-burger span{display:block;width:26px;height:2px;background:var(--ink);transition:all .35s cubic-bezier(.22,1,.36,1);transform-origin:center}
+  .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-burger.open span:nth-child(2){opacity:0}
+  .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* MOBIL OVERLAY MENÜ */
+  .mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--paper);z-index:55;display:flex;flex-direction:column;padding:24px 28px 32px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1),visibility 0s linear .45s;overflow-y:auto}
+  .mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
+  .mm-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule-soft);padding-bottom:16px;margin-bottom:24px}
+  .mm-logo{width:64px;height:64px;object-fit:contain}
+  .mm-close{background:transparent;border:1px solid var(--ink);color:var(--ink);width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(.22,1,.36,1)}
+  .mm-close:hover{background:var(--ink);color:var(--paper)}
+  .mm-links{display:flex;flex-direction:column;gap:0;margin-bottom:32px}
+  .mm-link{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:18px;padding:18px 4px;border-bottom:1px solid var(--rule-soft);font-family:"Source Serif 4",serif;font-weight:700;font-size:24px;color:var(--ink-deep);text-decoration:none;transition:color .35s cubic-bezier(.22,1,.36,1),padding-left .4s cubic-bezier(.22,1,.36,1);letter-spacing:-.005em;opacity:0;transform:translateX(-12px)}
+  .mobile-menu.open .mm-link{opacity:1;transform:translateX(0);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),color .35s cubic-bezier(.22,1,.36,1),padding-left .4s cubic-bezier(.22,1,.36,1)}
+  .mobile-menu.open .mm-link:nth-child(1){transition-delay:.08s}
+  .mobile-menu.open .mm-link:nth-child(2){transition-delay:.13s}
+  .mobile-menu.open .mm-link:nth-child(3){transition-delay:.18s}
+  .mobile-menu.open .mm-link:nth-child(4){transition-delay:.23s}
+  .mobile-menu.open .mm-link:nth-child(5){transition-delay:.28s}
+  .mobile-menu.open .mm-link:nth-child(6){transition-delay:.33s}
+  .mobile-menu.open .mm-link:nth-child(7){transition-delay:.38s}
+  .mobile-menu.open .mm-link:nth-child(8){transition-delay:.43s}
+  .mm-link:hover,.mm-link:active{color:var(--hu-red);padding-left:8px}
+  .mm-link .mm-num{font-family:"Special Elite",monospace;font-weight:400;font-size:11px;letter-spacing:.24em;color:var(--hu-red);width:28px}
+  .mm-cta{display:flex;align-items:center;justify-content:center;background:var(--ink-deep);color:var(--paper) !important;font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.24em;text-transform:uppercase;padding:18px;text-decoration:none;border:1px solid var(--ink-deep);transition:all .35s cubic-bezier(.22,1,.36,1)}
+  .mm-cta:hover,.mm-cta:active{background:var(--hu-red-dark);border-color:var(--hu-red-dark)}
+  .mm-foot{margin-top:auto;padding-top:24px;border-top:1px solid var(--rule-soft);display:flex;flex-direction:column;gap:6px;text-align:center;font-family:"Crimson Pro",serif;font-size:15px;color:var(--ink-mute)}
+  .mm-foot a{color:var(--ink-deep);text-decoration:none;font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.18em}
+  .mm-foot a:hover{color:var(--hu-red)}
 
   /* OLDALSÓ ÚSZÓ MENÜ — section-indicator + scroll-to-top */
   .side-nav{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:6px;align-items:center;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
@@ -165,10 +194,10 @@
   .menu-tab{font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);padding:14px 22px;background:none;border:0;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .35s var(--easing);position:relative}
   .menu-tab:hover{color:var(--ink-deep)}
   .menu-tab.active{color:var(--hu-red);border-bottom-color:var(--hu-red);font-weight:bold}
-  /* Étlap-tabok — sima crossfade in és out */
-  .menu-stack{display:grid}
-  .menu-stack > .menu-panel{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),visibility 0s linear .6s}
-  .menu-stack > .menu-panel.active{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
+  /* Étlap-tabok — crossfade, container az aktívhez igazodik */
+  .menu-stack{position:relative}
+  .menu-stack > .menu-panel{position:absolute;top:0;left:0;right:0;opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),visibility 0s linear .55s}
+  .menu-stack > .menu-panel.active{position:relative;opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
   .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
   .menu-col{display:flex;flex-direction:column;gap:18px}
   .menu-item{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px dotted var(--rule-soft);position:relative}
@@ -282,8 +311,13 @@
   .contact-row{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:baseline;padding:8px 0}
   .contact-row b{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;color:var(--hu-red);text-transform:uppercase;font-weight:400}
   .contact-row span{font-family:"Crimson Pro",serif;font-size:17px;color:var(--ink);line-height:1.5}
-  .contact-row a{color:var(--ink-deep);text-decoration:none;border-bottom:1px solid var(--rule-soft);transition:border-color .3s var(--easing)}
+  .contact-row a{color:var(--ink-deep) !important;text-decoration:none;border-bottom:1px solid var(--rule-soft);transition:border-color .3s var(--easing)}
   .contact-row a:hover{border-color:var(--hu-red)}
+  /* Globális link-szín-fix (telefon ne legyen kék) */
+  a[href^="tel:"],a[href^="mailto:"]{color:inherit;text-decoration:none}
+  .booking-meta a,.contact-row a,.mm-foot a,footer a{color:inherit !important}
+  .booking-call{display:inline-flex;align-items:center;gap:8px;font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--hu-red) !important;margin-top:6px;text-decoration:none;border-bottom:1px solid var(--hu-red);padding-bottom:2px}
+  .booking-call:hover{color:var(--paper) !important;background:var(--hu-red);border-color:var(--hu-red);padding:4px 10px;border-bottom:1px solid var(--hu-red)}
   .map-card{background:var(--paper-warm);border:1px solid var(--rule);box-shadow:var(--shadow-edge);padding:8px}
   .map-iframe{width:100%;height:480px;border:0;display:block}
   .map-caption{padding:14px 12px 6px;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);display:flex;justify-content:space-between}
@@ -302,12 +336,12 @@
 
   /* MOBILE */
   @media (max-width:980px){
-    .nav{grid-template-columns:auto 1fr auto;padding:10px 20px;gap:12px;position:sticky;top:0}
+    .nav{grid-template-columns:1fr auto 1fr;padding:10px 20px;gap:12px;position:sticky;top:0;background:var(--paper)}
     .nav-left{display:none}
-    .nav-right{display:none;position:fixed;top:0;left:0;right:0;background:var(--paper);flex-direction:column;padding:120px 32px 48px;gap:20px;align-items:flex-start;box-shadow:0 12px 30px rgba(0,0,0,.15);transform:translateY(-100%);transition:transform .5s var(--easing);justify-content:flex-start;z-index:55}
-    .nav-right.open{display:flex;transform:translateY(0)}
-    .nav-center{justify-self:start}
-    .nav-center img{width:72px;height:72px}
+    .nav-right{display:none}
+    .nav-center{grid-column:2;justify-self:center}
+    .nav-center img{width:78px;height:78px}
+    .nav-burger{grid-column:3;justify-self:end}
     .side-nav{display:none}
     .nav-cta{display:none}
     .nav-right .nav-cta{display:inline-flex;margin-left:0}
@@ -333,11 +367,13 @@
     .sig-card.feature .sig-name{font-size:30px}
     .sig-card.feature .sig-photo{aspect-ratio:4/3}
     .sig-body{padding:22px 22px 20px}
-    .events-grid{grid-template-columns:1fr;gap:36px}
+    .events-grid{grid-template-columns:1fr;gap:28px}
     .events-text{padding-right:0}
     .events-h2{font-size:32px}
-    .events-photos{height:auto;grid-template-rows:auto auto;gap:10px}
-    .events-photos > div{aspect-ratio:4/3}
+    .events-list li{grid-template-columns:1fr;gap:6px;padding:14px 0}
+    .events-list li b{padding-top:0}
+    .events-photos{height:auto;grid-template-columns:1fr;grid-template-rows:auto;gap:14px}
+    .events-photos > div{aspect-ratio:5/3}
     .events-photos > div:first-child{grid-row:span 1}
     .drinks-grid{grid-template-columns:1fr;gap:36px}
     .csiki-feat{grid-template-columns:1fr;gap:18px;text-align:center}
@@ -352,9 +388,16 @@
     .booking-h2{font-size:38px}
     .contact-grid{grid-template-columns:1fr;gap:48px}
     .contact-row{grid-template-columns:1fr;gap:4px;padding:10px 0;border-bottom:1px dashed var(--rule-soft)}
+    .booking-meta{grid-template-columns:1fr;gap:16px}
+    .booking-meta > div{padding-bottom:16px;border-bottom:1px dashed rgba(245,239,221,.2)}
+    .booking-meta > div:last-child{border-bottom:none;padding-bottom:0}
     .map-iframe{height:360px}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-    .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+    .footer-grid{grid-template-columns:1fr;gap:36px;text-align:center}
+    .footer-brand{align-items:center;text-align:center}
+    .footer-brand p{max-width:none;font-size:15.5px;line-height:1.6}
+    .footer-col h4{font-size:12px;margin-bottom:18px;letter-spacing:.3em}
+    .footer-col a,.footer-col li{font-size:16.5px;line-height:2}
+    .footer-bottom{flex-direction:column;gap:8px;text-align:center;padding-top:28px}
     .sec-head{grid-template-columns:1fr;gap:6px}
     section{padding:72px 0}
     .booking-section{padding:80px 24px}
@@ -373,7 +416,7 @@
 </head>
 <body>
 
-<!-- NAV — logó középen, menü L/R splitben -->
+<!-- NAV — desktop: logó középen / mobil: csak logó + burger -->
 <nav class="nav" id="nav">
   <div class="nav-left">
     <a class="nav-link" href="#tortenet">Történet</a>
@@ -384,14 +427,41 @@
   <a class="nav-center" href="#top" aria-label="Misi Csárda — kezdőlap">
     <img src="logo.png" alt="Misi Csárda — Hagyományos magyar konyha és pizza, 2016 óta">
   </a>
-  <div class="nav-right" id="navMenu">
+  <div class="nav-right">
     <a class="nav-link" href="#vendegekert">Vendégekért</a>
     <a class="nav-link" href="#galeria">Galéria</a>
     <a class="nav-link" href="#kontakt">Kapcsolat</a>
     <a href="#foglalas" class="nav-cta">Asztalt foglalok</a>
   </div>
-  <button class="nav-burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  <button class="nav-burger" id="burger" aria-label="Menü megnyitása" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- MOBIL OVERLAY MENÜ -->
+<div class="mobile-menu" id="navMenu" role="dialog" aria-label="Mobil-navigáció">
+  <div class="mm-header">
+    <img class="mm-logo" src="logo.png" alt="Misi Csárda">
+    <button class="mm-close" id="mmClose" aria-label="Menü bezárása">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M5 5L17 17M17 5L5 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="mm-links">
+    <a class="mm-link" href="#tortenet"><span class="mm-num">01</span><span class="mm-name">Történet</span></a>
+    <a class="mm-link" href="#etlap"><span class="mm-num">02</span><span class="mm-name">Étlap</span></a>
+    <a class="mm-link" href="#kedvencek"><span class="mm-num">03</span><span class="mm-name">Kedvencek</span></a>
+    <a class="mm-link" href="#italok"><span class="mm-num">04</span><span class="mm-name">Italok</span></a>
+    <a class="mm-link" href="#vendegekert"><span class="mm-num">05</span><span class="mm-name">Vendégekért</span></a>
+    <a class="mm-link" href="#galeria"><span class="mm-num">06</span><span class="mm-name">Galéria</span></a>
+    <a class="mm-link" href="#foglalas"><span class="mm-num">07</span><span class="mm-name">Foglalás</span></a>
+    <a class="mm-link" href="#kontakt"><span class="mm-num">08</span><span class="mm-name">Kapcsolat</span></a>
+  </nav>
+  <a href="#foglalas" class="mm-cta">Asztalt foglalok</a>
+  <div class="mm-foot">
+    <a href="tel:+40265333444">+40 265 333 444</a>
+    <span>Erdély utca 224/A · Marosszentgyörgy</span>
+  </div>
+</div>
 
 <!-- OLDALSÓ ÚSZÓ MENÜ -->
 <aside class="side-nav" id="sideNav" aria-label="Oldal-navigáció">
@@ -642,7 +712,7 @@
     </div>
 
     </div>
-    <p class="menu-note">Az árak <b>mindenkire érvényesek</b>, a 12. kiadás (2026. április) szerint. Allergén-jelölések és tápérték-adatok a teljes étlapon — kérd a felszolgálótól, vagy <a href="MENUZIAR.pdf" style="color:var(--hu-red)">olvasd el itt PDF-ben</a>.</p>
+    <p class="menu-note">A 12. kiadás (2026. április) szerinti árak. Az allergén-jelölések és tápérték-adatok a teljes étlapon olvashatók — kérd a felszolgálótól, vagy <a href="MENUZIAR.pdf" style="color:var(--hu-red)">nézd meg itt PDF-ben</a>.</p>
   </div>
 </div>
 
@@ -829,6 +899,7 @@
           <div>
             <b>Telefon</b>
             <span>+40 265 333 444</span>
+            <a class="booking-call" href="tel:+40265333444">📞 Hívás indítása</a>
           </div>
           <div>
             <b>E-mail</b>
@@ -987,14 +1058,35 @@
   lenis.on('scroll', ({scroll}) => updateSideNav(scroll));
   updateSideNav(window.scrollY || 0);
 
-  // BURGER
+  // BURGER + MOBIL OVERLAY MENÜ
   const burger = document.getElementById('burger');
   const navMenu = document.getElementById('navMenu');
+  const mmClose = document.getElementById('mmClose');
+  function openMobileMenu(){
+    navMenu.classList.add('open');
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    lenis.stop();
+  }
+  function closeMobileMenu(){
+    navMenu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+    lenis.start();
+  }
   burger.addEventListener('click',()=>{
-    navMenu.classList.toggle('open');
-    burger.classList.toggle('open');
+    if(navMenu.classList.contains('open')) closeMobileMenu();
+    else openMobileMenu();
   });
-  navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navMenu.classList.remove('open')));
+  mmClose.addEventListener('click',closeMobileMenu);
+  navMenu.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{
+    setTimeout(closeMobileMenu, 100);
+  }));
+  document.addEventListener('keydown',(e)=>{
+    if(e.key==='Escape' && navMenu.classList.contains('open')) closeMobileMenu();
+  });
 
   // REVEAL
   const io = new IntersectionObserver((entries)=>{
