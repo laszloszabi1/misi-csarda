@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Misi Csárda — Moodboard v2 / Ziarul Mic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Crimson+Pro:ital,wght@0,300..700;1,300..700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:        #F4EDDD;
+    --paper-aged:   #E5D9C0;
+    --paper-wash:   #ECE0CC;
+    --paper-warm:   #FAF6ED;
+    --ink:          #1A1612;
+    --ink-deep:     #0E0B08;
+    --ink-mute:     #4A413A;
+    --ink-soft:     #6E6358;
+    --rule:         #2A211B;
+    --rule-soft:    #C4B79C;
+    --hu-red:       #B43227;
+    --hu-red-dark:  #842017;
+    --hu-green:     #2E4B36;
+    --gold:         #B58A47;
+    --logo-brown:   #4A2D20;
+    --shadow-edge:  0 1px 0 rgba(20,15,10,.18), 0 6px 14px rgba(20,15,10,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:"Crimson Pro",Georgia,serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(180,50,39,.018) 0 36%, transparent 37%),
+      radial-gradient(circle at 88% 78%, rgba(46,75,54,.02) 0 40%, transparent 41%),
+      repeating-linear-gradient(0deg, rgba(20,15,10,.012) 0 1px, transparent 1px 3px);
+  }
+  .page{max-width:1280px;margin:0 auto;padding:48px 64px 96px}
+
+  /* MASTHEAD with LOGO */
+  .masthead{border-top:8px double var(--rule);border-bottom:1px solid var(--rule);padding:24px 0 20px}
+  .mast-banner{display:flex;justify-content:space-between;align-items:center;font-family:"Special Elite",ui-monospace,monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:24px}
+  .mast-banner b{color:var(--hu-red);font-weight:400;letter-spacing:.28em}
+  .mast-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+  .mast-logo{width:240px;height:240px;display:block;object-fit:contain}
+  .logo-preview-light img,.logo-preview-dark .seal img,.reason-head .seal img{object-fit:contain}
+  .mast-meta-row{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;width:100%;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+  .mast-meta-row .left{text-align:right}
+  .mast-meta-row .right{text-align:left}
+  .mast-edition{font-family:"Source Serif 4",serif;font-weight:600;font-size:15px;letter-spacing:.16em;color:var(--ink-deep);text-transform:uppercase;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:8px 24px;white-space:nowrap}
+
+  /* TAGLINE STAMP */
+  .tagline{position:relative;margin:48px 0 64px;text-align:center}
+  .tagline-quote{font-family:"Source Serif 4",serif;font-style:italic;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.25;color:var(--ink-deep);max-width:900px;margin:0 auto}
+  .tagline-quote::before,.tagline-quote::after{content:"";display:inline-block;width:60px;height:1px;background:var(--rule);vertical-align:middle;margin:0 16px;transform:translateY(-8px)}
+  .tagline-attr{margin-top:14px;font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--hu-red)}
+  .stamp{position:absolute;top:-26px;right:6%;transform:rotate(-9deg);border:2px solid var(--hu-red);color:var(--hu-red);padding:8px 16px;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;background:rgba(244,237,221,.65);box-shadow:0 0 0 3px rgba(180,50,39,.05)}
+
+  /* SECTION HEADER — sokkal nagyobb és olvashatóbb */
+  section{margin:104px 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;border-bottom:2px solid var(--rule);padding-bottom:14px;margin-bottom:36px}
+  .sec-num{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.3em;color:var(--hu-red);text-transform:uppercase;padding-bottom:6px}
+  .sec-title{font-family:"Source Serif 4",serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.015em;color:var(--ink-deep)}
+  .sec-aux{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;color:var(--ink-mute);text-transform:uppercase;padding-bottom:10px}
+
+  /* INTRO ARTICLE */
+  .article{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .article p{font-size:17.5px;line-height:1.7;color:var(--ink);margin-bottom:14px;text-align:justify;hyphens:auto}
+  .article p:first-child::first-letter{font-family:"Source Serif 4",serif;font-weight:900;font-size:72px;line-height:.85;float:left;padding:8px 14px 0 0;color:var(--hu-red)}
+  .article .col{padding-right:32px;border-right:1px solid var(--rule-soft)}
+  .article .col:last-child{padding-right:0;border-right:none}
+
+  /* PALETTE */
+  .palette{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  .swatch{border:1px solid var(--rule);background:var(--paper-warm);padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-edge)}
+  .swatch-chip{height:118px;border:1px solid var(--rule)}
+  .swatch-name{font-family:"Source Serif 4",serif;font-weight:700;font-size:18px;letter-spacing:-.005em;color:var(--ink-deep)}
+  .swatch-hex{font-family:"Special Elite",monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.18em;text-transform:uppercase}
+  .swatch-role{font-family:"Crimson Pro",serif;font-size:13.5px;color:var(--ink-mute);font-style:italic;line-height:1.4;border-top:1px dashed var(--rule-soft);padding-top:8px}
+
+  /* TYPOGRAPHY — 3 cards now */
+  .typo{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .typo-card{border:1px solid var(--rule);background:var(--paper-warm);padding:28px;box-shadow:var(--shadow-edge)}
+  .typo-meta{display:flex;justify-content:space-between;border-bottom:1px solid var(--rule-soft);padding-bottom:12px;margin-bottom:22px;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+  .typo-meta b{color:var(--hu-red);font-weight:400;letter-spacing:.26em}
+  .typo-sample{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+  .typo-role{font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.24em;color:var(--ink-soft);text-transform:uppercase}
+  .typo-show.source-display{font-family:"Source Serif 4",serif;font-weight:900;font-size:54px;line-height:1;letter-spacing:-.015em;color:var(--ink-deep)}
+  .typo-show.source-headline{font-family:"Source Serif 4",serif;font-weight:700;font-size:30px;line-height:1.15;color:var(--ink-deep)}
+  .typo-show.source-italic{font-family:"Source Serif 4",serif;font-style:italic;font-weight:500;font-size:24px;line-height:1.3;color:var(--ink)}
+  .typo-show.crimson-body{font-family:"Crimson Pro",serif;font-weight:400;font-size:18px;line-height:1.65}
+  .typo-show.crimson-quote{font-family:"Crimson Pro",serif;font-style:italic;font-weight:500;font-size:21px;line-height:1.4}
+  .typo-show.special-elite-large{font-family:"Special Elite",monospace;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-deep)}
+  .typo-show.special-elite{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--hu-red)}
+  .typo-note{font-family:"Crimson Pro",serif;font-size:14px;color:var(--ink-mute);font-style:italic;line-height:1.5;border-top:1px dashed var(--rule-soft);padding-top:10px;margin-top:6px}
+
+  /* COMPONENTS */
+  .comp{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .comp-card{border:1px solid var(--rule);background:var(--paper-warm);padding:28px;box-shadow:var(--shadow-edge);min-height:240px;display:flex;flex-direction:column;gap:18px}
+  .comp-label{font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.24em;color:var(--ink-soft);text-transform:uppercase;border-bottom:1px solid var(--rule-soft);padding-bottom:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;border:0;background:none;text-decoration:none;transition:all .35s cubic-bezier(.22,1,.36,1)}
+  .btn-primary{background:var(--ink-deep);color:var(--paper);border:1px solid var(--ink-deep)}
+  .btn-primary:hover{background:var(--hu-red-dark);border-color:var(--hu-red-dark)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-stamp{background:var(--paper-warm);color:var(--hu-red);border:2px solid var(--hu-red);transform:rotate(-1deg)}
+  .btn-stamp:hover{background:var(--hu-red);color:var(--paper-warm)}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--rule)}
+  .badge.red{border-color:var(--hu-red);color:var(--hu-red)}
+  .badge.green{border-color:var(--hu-green);color:var(--hu-green)}
+  .pull-quote{font-family:"Source Serif 4",serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.35;border-left:3px solid var(--hu-red);padding-left:18px;color:var(--ink-deep)}
+  .menu-item{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px dotted var(--rule-soft)}
+  .menu-item-name{font-family:"Source Serif 4",serif;font-weight:700;font-size:17px;color:var(--ink-deep)}
+  .menu-item-meta{font-family:"Crimson Pro",serif;font-style:italic;font-size:13px;color:var(--ink-mute);margin-top:2px}
+  .menu-item-price{font-family:"Special Elite",monospace;font-size:14px;color:var(--ink-deep)}
+
+  /* MOOD */
+  .mood{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .mood-tile{aspect-ratio:3/4;border:1px solid var(--rule);background:var(--paper-aged);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px;color:var(--paper);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+  .mood-tile::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 30% 30%,rgba(20,15,10,.3) 0%,rgba(20,15,10,.65) 100%),
+    repeating-linear-gradient(45deg,rgba(0,0,0,.08) 0 2px,transparent 2px 5px);}
+  .mood-tile span{position:relative;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  .mood-tile.red{background:linear-gradient(135deg,#7a1f17 0%,#3a100c 100%)}
+  .mood-tile.warm{background:linear-gradient(135deg,#6b4e2f 0%,#2a1a0d 100%)}
+  .mood-tile.green{background:linear-gradient(135deg,#3a5c43 0%,#16241a 100%)}
+  .mood-tile.cream{background:linear-gradient(135deg,#cdb988 0%,#7e6a3f 100%)}
+  .mood-tile.dark{background:linear-gradient(135deg,#2a221a 0%,#0a0805 100%)}
+  .mood-tile.brown{background:linear-gradient(135deg,#5c3d23 0%,#1f130a 100%)}
+  .mood-tile.aged{background:linear-gradient(135deg,#9a8460 0%,#4d4029 100%)}
+  .mood-tile.ink{background:linear-gradient(135deg,#1f2c3a 0%,#0a0d12 100%)}
+
+  /* LOGO IN CONTEXT preview */
+  .logo-preview{background:var(--paper-warm);border:1px solid var(--rule);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;box-shadow:var(--shadow-edge)}
+  .logo-preview-light{display:flex;justify-content:center}
+  .logo-preview-light img{width:200px;height:200px}
+  .logo-preview-dark{background:var(--ink-deep);padding:36px;display:flex;justify-content:center;border:1px solid var(--rule)}
+  .logo-preview-dark .seal{width:230px;height:230px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(180,138,71,.18), 0 12px 30px rgba(0,0,0,.35)}
+  .logo-preview-dark .seal img{width:200px;height:200px}
+  .logo-rules{font-family:"Crimson Pro",serif;font-size:15px;line-height:1.6;color:var(--ink-mute);margin-top:24px;grid-column:1/-1;border-top:1px dashed var(--rule-soft);padding-top:18px}
+  .logo-rules b{color:var(--ink-deep);font-style:italic}
+
+  /* SITEMAP */
+  .sitemap{display:grid;grid-template-columns:1fr 1fr;gap:48px;border-top:4px double var(--rule);padding-top:36px}
+  .sitemap-col h3{font-family:"Source Serif 4",serif;font-weight:800;font-size:22px;letter-spacing:-.005em;margin-bottom:18px;color:var(--ink-deep)}
+  .sitemap-list{list-style:none}
+  .sitemap-list li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;padding:12px 0;border-bottom:1px dashed var(--rule-soft);align-items:baseline}
+  .sitemap-list .num{font-family:"Special Elite",monospace;font-size:11px;color:var(--hu-red);letter-spacing:.18em}
+  .sitemap-list .name{font-family:"Source Serif 4",serif;font-weight:700;font-size:18px;color:var(--ink-deep)}
+  .sitemap-list .desc{display:block;font-family:"Crimson Pro",serif;font-style:italic;font-size:13.5px;color:var(--ink-mute);margin-top:2px;grid-column:2}
+  .sitemap-list .marker{font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;color:var(--ink-soft);text-transform:uppercase}
+
+  /* RATIONALE */
+  .reason{background:var(--ink-deep);color:var(--paper);padding:64px 64px;margin:104px -64px -96px;border-top:8px double var(--hu-red)}
+  .reason-head{display:flex;align-items:center;gap:32px;margin-bottom:40px}
+  .reason-head .seal{width:120px;height:120px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 3px rgba(180,138,71,.2), 0 10px 24px rgba(0,0,0,.3)}
+  .reason-head .seal img{width:104px;height:104px}
+  .reason h2{font-family:"Source Serif 4",serif;font-weight:800;font-size:46px;letter-spacing:-.015em;line-height:1.05;color:var(--paper)}
+  .reason h2 em{font-family:"Source Serif 4",serif;font-style:italic;color:var(--hu-red);font-weight:500;display:block;margin-top:6px;font-size:.7em}
+  .reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+  .reason-card{border-left:2px solid var(--hu-red);padding-left:24px}
+  .reason-card h4{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.26em;color:var(--hu-red);text-transform:uppercase;margin-bottom:10px}
+  .reason-card p{font-family:"Crimson Pro",serif;font-size:17px;line-height:1.65;color:var(--paper-aged)}
+  .reason-card p b{color:var(--paper);font-weight:600;font-style:italic}
+
+  /* COLOPHON */
+  .colophon{margin-top:0;border-top:8px double var(--rule);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+
+  @media (max-width:880px){
+    .page{padding:24px 20px 64px}
+    .mast-meta-row{grid-template-columns:1fr;gap:8px;text-align:center}
+    .mast-meta-row .left,.mast-meta-row .right{text-align:center}
+    .mast-banner{flex-direction:column;gap:8px;text-align:center}
+    .mast-logo{width:180px;height:180px}
+    .article{grid-template-columns:1fr;gap:18px}
+    .article .col{border-right:none;padding-right:0;padding-bottom:14px;border-bottom:1px solid var(--rule-soft)}
+    .palette{grid-template-columns:repeat(2,1fr)}
+    .typo{grid-template-columns:1fr}
+    .comp{grid-template-columns:1fr}
+    .mood{grid-template-columns:repeat(2,1fr)}
+    .sitemap{grid-template-columns:1fr;gap:32px}
+    .logo-preview{grid-template-columns:1fr;gap:24px;padding:24px}
+    .reason{padding:36px 20px;margin:72px -20px -64px}
+    .reason h2{font-size:30px}
+    .reason-head{flex-direction:column;text-align:center;gap:18px}
+    .reason-grid{grid-template-columns:1fr}
+    .typo-show.source-display{font-size:42px}
+    .sec-head{grid-template-columns:1fr;gap:6px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD with LOGO -->
+  <header class="masthead">
+    <div class="mast-banner">
+      <span><b>ZIARUL MIC</b> · Buletinul oficial al bucătăriei</span>
+      <span>Strada Transilvaniei 224/A · Sângeorgiu de Mureș</span>
+      <span>Tel. <b>0265 333 444</b></span>
+    </div>
+    <div class="mast-logo-wrap">
+      <img class="mast-logo" src="logo.png" alt="Misi Csárda — restaurant tradițional & pizza, since 2016">
+      <div class="mast-meta-row">
+        <span class="left">Județul Mureș · 547530</span>
+        <span class="mast-edition">Edizia a XII-a · Aprilie 2026</span>
+        <span class="right">Vol. I — Moodboard</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TAGLINE -->
+  <div class="tagline">
+    <div class="stamp">Édes étvágyat · 1+1 jó kedvet</div>
+    <p class="tagline-quote">„Cine știe să mănânce, &nbsp;<br>știe să aștepte."</p>
+    <div class="tagline-attr">— Spirit de bucătărie · de la 2016</div>
+  </div>
+
+  <!-- INTRO ARTICLE -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 01</span>
+      <h2 class="sec-title">A márka koncepciója</h2>
+      <span class="sec-aux">Editorial · 4 min citire</span>
+    </div>
+    <div class="article">
+      <div class="col">
+        <p>A <b>Misi Csárda</b> nem csupán egy étterem — egy hagyomány, egy kis újság, amelyet minden héten egy új edition-ben tálalnak fel. A jelenlegi étlap a <b>11. kiadás</b>: 2024. februárjában nyomták, és a vendégek többsége fejből idézi a sorokat.</p>
+        <p>A vizuális nyelv ezt a hagyományt fordítja át a digitális térbe. Az oldal nem hangoskodik — nyomtatott újságként viselkedik: kétszínű tinta, krém papír, oldalszámozás, kiadás-megjelölés. Minden szakasz egy „cikk".</p>
+      </div>
+      <div class="col">
+        <p>A <b>fő-metafora</b>: egy újság-stand-on találtad meg a pénteki Misi Csárda kiadást. Lapozgatod, és minden cikk egy fogás története — a Misi-saláta receptje, a Borzoska legendája, a Tiltott Csíki Sör érkezése, az Eszterházy palacsinta szombat délutánja.</p>
+        <p>A <b>logót</b> változatlanul használjuk — a kerek pecsét cursive script-tel és piros tulipánnal már önmagában a brand-mark. Az újság-keret köré épül, mint egy hivatalos lap-bélyegző.</p>
+      </div>
+      <div class="col">
+        <p>A célközönség dupla: <b>helyi családok</b> és <b>turisták</b>, akik autentikusat keresnek. Mindkettőnek a „nyomtatott újság" érzelmi horogot ad — nem ipari, nem sablonos, hanem mintha egy pesti kávéházi újságot olvasnának.</p>
+        <p class="pull-quote">A márka eladja a <em>türelem</em> és a <em>kézművesség</em> luxusát egy 30 lejes ebéd áráért.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO IN CONTEXT -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 02</span>
+      <h2 class="sec-title">A logó használata</h2>
+      <span class="sec-aux">Light · Dark · Szabályok</span>
+    </div>
+    <div class="logo-preview">
+      <div class="logo-preview-light">
+        <img src="logo.png" alt="Misi Csárda logó — krém papír háttéren">
+      </div>
+      <div class="logo-preview-dark">
+        <div class="seal"><img src="logo.png" alt="Misi Csárda logó — sötét háttéren krém pecséttel"></div>
+      </div>
+      <div class="logo-rules">
+        <b>Méret-szabályok:</b> a masthead-en 240px, a navigációban 64px, a footer-ben 96px, a foglalás-szekcióban 180px. <b>Min. 48px</b> méret alatt ne használjuk.<br>
+        <b>Háttér:</b> a logó már önmagában keretes (kör), így bármilyen háttéren működik. A sötét hátterű szakaszokon (foglalás-CTA, footer) gyengéd glow / brightness 1.05 emelést alkalmazunk.<br>
+        <b>Tipográfia-egyensúly:</b> a logó belső cursive script-je egyedi. Az oldal többi részén NEM utánozzuk — Source Serif 4 marad a fő headline-font. Így a logó kiemelt brand-pecsét, a szöveg pedig „újság-cikk".
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 03</span>
+      <h2 class="sec-title">Színpaletta</h2>
+      <span class="sec-aux">Tinta és papír · 10 token</span>
+    </div>
+    <div class="palette">
+      <div class="swatch"><div class="swatch-chip" style="background:#F4EDDD"></div><div class="swatch-name">Paper</div><div class="swatch-hex">#F4EDDD</div><div class="swatch-role">Fő háttér — friss újságpapír</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#E5D9C0"></div><div class="swatch-name">Paper Aged</div><div class="swatch-hex">#E5D9C0</div><div class="swatch-role">Másodlagos szakasz-háttér</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#FAF6ED"></div><div class="swatch-name">Paper Warm</div><div class="swatch-hex">#FAF6ED</div><div class="swatch-role">Kártyák, kiemelt boxok</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#1A1612"></div><div class="swatch-name">Ink</div><div class="swatch-hex">#1A1612</div><div class="swatch-role">Fő szöveg — meleg fekete tinta</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#0E0B08"></div><div class="swatch-name">Ink Deep</div><div class="swatch-hex">#0E0B08</div><div class="swatch-role">Címsorok, dark szakaszok</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#B43227"></div><div class="swatch-name">Hungarian Red</div><div class="swatch-hex">#B43227</div><div class="swatch-role">Bélyegzők, a logó tulipánja, accent</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#842017"></div><div class="swatch-name">Red Dark</div><div class="swatch-hex">#842017</div><div class="swatch-role">Hover állapotok, signature</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#2E4B36"></div><div class="swatch-name">Forest Green</div><div class="swatch-hex">#2E4B36</div><div class="swatch-role">Magyar zászló-zöld · másodlagos</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#4A2D20"></div><div class="swatch-name">Logo Brown</div><div class="swatch-hex">#4A2D20</div><div class="swatch-role">A logóból kiolvasott árnyalat</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#6E6358"></div><div class="swatch-name">Ink Mute</div><div class="swatch-hex">#6E6358</div><div class="swatch-role">Másodlagos szöveg, captionok</div></div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY — only 3 fonts now -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 04</span>
+      <h2 class="sec-title">Tipográfia</h2>
+      <span class="sec-aux">3 font · Display + Body + Mono</span>
+    </div>
+    <div class="typo">
+      <div class="typo-card">
+        <div class="typo-meta"><span>SOURCE SERIF 4</span><b>Display + Headline</b></div>
+        <div class="typo-sample">
+          <span class="typo-role">Display · 54px / Black 900</span>
+          <div class="typo-show source-display">A história</div>
+        </div>
+        <div class="typo-sample">
+          <span class="typo-role">Headline · 30px / Bold 700</span>
+          <div class="typo-show source-headline">Szombati ebéd, családdal</div>
+        </div>
+        <div class="typo-sample">
+          <span class="typo-role">Italic · 24px / Medium 500</span>
+          <div class="typo-show source-italic">A Borzoska titka</div>
+        </div>
+        <div class="typo-note">Olvasható nagy és közepes méretben is. Klasszikus újság-headline karakter, modern képernyő-optimalizálással. Minden címsor, alcím, szakasz-megnevezés ide tartozik.</div>
+      </div>
+      <div class="typo-card">
+        <div class="typo-meta"><span>CRIMSON PRO</span><b>Body · Olvasás</b></div>
+        <div class="typo-sample">
+          <span class="typo-role">Body · 18px / Regular</span>
+          <div class="typo-show crimson-body">A Misi-saláta receptje 2018-ban született, amikor egy szombati ebéden a vendég megkérdezte: „Mit ajánl nekem ma a séf?"</div>
+        </div>
+        <div class="typo-sample">
+          <span class="typo-role">Quote italic · 21px / Medium</span>
+          <div class="typo-show crimson-quote">„A vendéget úgy kell fogadni, ahogy a saját apósodat — kétszer megkérdezed, kér-e még egy stamperlit."</div>
+        </div>
+        <div class="typo-note">Meleg, könnyen olvasható kenyérszöveg. Cikk-paragrafusok, étel-leírások, idézetek. Az oldal legtöbb szövege ezzel.</div>
+      </div>
+      <div class="typo-card">
+        <div class="typo-meta"><span>SPECIAL ELITE</span><b>Caption · Mono</b></div>
+        <div class="typo-sample">
+          <span class="typo-role">Caption · 18px / Letter-spaced</span>
+          <div class="typo-show special-elite-large">SPIRIT DE BUCĂTĂRIE</div>
+        </div>
+        <div class="typo-sample">
+          <span class="typo-role">Meta · 13px / Red accent</span>
+          <div class="typo-show special-elite">EDIȚIA A 12-A · 27 APRILIE 2026</div>
+        </div>
+        <div class="typo-note">Írógép-érzet a metaadatoknak: oldalszámok, kiadás-számok, telefonszámok, nyitvatartás, gomb-feliratok. Mindig letter-spaced uppercase.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 05</span>
+      <h2 class="sec-title">Komponensek</h2>
+      <span class="sec-aux">Buttons · Badges · Étlap · Idézet</span>
+    </div>
+    <div class="comp">
+      <div class="comp-card">
+        <span class="comp-label">Gombok · Foglalás-akcióhoz</span>
+        <a class="btn btn-primary" href="#">Asztalt foglalok</a>
+        <a class="btn btn-ghost" href="#">Étlapot olvasok</a>
+        <a class="btn btn-stamp" href="#">Frissen nyomva ★</a>
+      </div>
+      <div class="comp-card">
+        <span class="comp-label">Bélyegzők · Címkék</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="badge">Friss · 2024</span><span class="badge red">Édes specialitás</span><span class="badge green">Hagyományos</span></div>
+        <p class="pull-quote">A jó étel onnan ismerhető fel, hogy a csendet érzed mellette.</p>
+      </div>
+      <div class="comp-card">
+        <span class="comp-label">Étlap-tétel · Listing</span>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Salată Misi</div>
+            <div class="menu-item-meta">piept de pui · cartofi pai · iceberg · 400g</div>
+          </div>
+          <span class="menu-item-price">36 lei</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Borzoska de pui</div>
+            <div class="menu-item-meta">a ház signature-je · 250g</div>
+          </div>
+          <span class="menu-item-price">43 lei</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Clătite "Eszterházy"</div>
+            <div class="menu-item-meta">brânză de vaci · stafide · sos vanilie · 350g</div>
+          </div>
+          <span class="menu-item-price">31 lei</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOOD -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 06</span>
+      <h2 class="sec-title">Hangulat</h2>
+      <span class="sec-aux">Vizuális tónusok · 8 mood-tile</span>
+    </div>
+    <div class="mood">
+      <div class="mood-tile dark"><span>Hero · Cinematic terem</span></div>
+      <div class="mood-tile warm"><span>Borzoska · close-up</span></div>
+      <div class="mood-tile red"><span>Tiltott Csíki · pohárban</span></div>
+      <div class="mood-tile aged"><span>Mămăligă · réz tál</span></div>
+      <div class="mood-tile green"><span>Csíki bor · zöld üveg</span></div>
+      <div class="mood-tile cream"><span>Eszterházy · kézzel sütve</span></div>
+      <div class="mood-tile brown"><span>Sülő-grill · forró kép</span></div>
+      <div class="mood-tile ink"><span>Étlap · papír makró</span></div>
+    </div>
+    <p style="margin-top:18px;font-family:'Crimson Pro',serif;font-style:italic;font-size:15px;color:var(--ink-mute);text-align:center;">A végleges site-ra Facebook-fotókból válogatok 16-20 darabot · cinematic warmth + duotone overlay-ekkel egységes vizuális hangzat.</p>
+  </section>
+
+  <!-- SITEMAP -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">№ 07</span>
+      <h2 class="sec-title">Oldal-szerkezet</h2>
+      <span class="sec-aux">Single-page · 8 szekció · ~3500 szó</span>
+    </div>
+    <div class="sitemap">
+      <div class="sitemap-col">
+        <h3>Az újság oldalai</h3>
+        <ul class="sitemap-list">
+          <li><span class="num">P.01</span><span class="name">Masthead + Hero</span><span class="marker">FOLD</span><span class="desc">Logó + ma-dátum + nagy fotó + foglalás-CTA — első benyomás 5 mp.</span></li>
+          <li><span class="num">P.02</span><span class="name">Vezércikk · A história</span><span class="marker">~600 szó</span><span class="desc">3-hasábos cikk a 2016-os indulásról, Misi-családi receptekről, Sângeorgiu-i gyökerekről.</span></li>
+          <li><span class="num">P.03</span><span class="name">Az étlap · Ziarul Mic</span><span class="marker">interaktív</span><span class="desc">Kategória-tabok (mic dejun · ciorbe · grătar · pizza · desert) — éles árakkal a PDF-ből.</span></li>
+          <li><span class="num">P.04</span><span class="name">Signature · A 5 jelölt fogás</span><span class="marker">grid</span><span class="desc">Salată Misi · Borzoska · Peter's sandwich · Eszterházy · Preferatul lui Misi platou.</span></li>
+        </ul>
+      </div>
+      <div class="sitemap-col">
+        <h3>Az újság szekciói</h3>
+        <ul class="sitemap-list">
+          <li><span class="num">P.05</span><span class="name">Italok · Borok és Csíki</span><span class="marker">2 hasáb</span><span class="desc">Purcari · Cricova · Tokaji · Tiltott Csíki Sör · Țuică de Glodeni Premium.</span></li>
+          <li><span class="num">P.06</span><span class="name">Galéria · Fotó-rovat</span><span class="marker">masonry</span><span class="desc">16-20 fotó újság-stílusban (caption + dátum-stamp).</span></li>
+          <li><span class="num">P.07</span><span class="name">Foglalás · Levél a szerkesztőhöz</span><span class="marker">form</span><span class="desc">Netlify Form: név · létszám · dátum · óra · üzenet — minden mező újság-stílusú.</span></li>
+          <li><span class="num">P.08</span><span class="name">Kontakt + Térkép</span><span class="marker">FOOTER</span><span class="desc">Cím · telefon · nyitvatartás · Google Maps embed · Facebook · Instagram.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATIONALE -->
+  <div class="reason">
+    <div class="reason-head">
+      <div class="seal"><img src="logo.png" alt="Misi Csárda márka-pecsét"></div>
+      <h2>Miért működik ez Misi-nek? <em>Az indoklás</em></h2>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <h4>1 · Egyedi a piacon</h4>
+        <p>Erdélyi magyaros vendéglők többnyire <b>fa-rusztikus</b> vagy <b>modern-minimal</b> kategóriában mozognak. A „nyomtatott újság" mint vizuális nyelv <b>nincs</b> egyetlen versenytársuknál sem — azonnali emlékezetes különbség.</p>
+      </div>
+      <div class="reason-card">
+        <h4>2 · A márka már így viselkedik</h4>
+        <p>A Misi étlapja <b>tényleg „Ziarul Mic" — Edizia 11.</b> Ez nem rákényszerített koncepció: a kliens már így gondolkodik a saját brandjéről. Az oldal csak <b>kibontja</b> ezt a gondolatot.</p>
+      </div>
+      <div class="reason-card">
+        <h4>3 · A logó kerül középre</h4>
+        <p>A meglévő logó (kör + cursive + tulipán) <b>változatlan</b> — az újság-keret köré épül. A márka-érték nem vész el, csak modern-elegáns kontextust kap.</p>
+      </div>
+      <div class="reason-card">
+        <h4>4 · Tartalom-vezérelt, nem fotó-vezérelt</h4>
+        <p>Mivel a Misi <b>nem rendelkezik professzionális fotómappával</b>, az újság-koncepció a <b>tipográfiát teszi a hős szerepébe</b>. A fotók másodlagosak — kevés, de ütős kép kell.</p>
+      </div>
+      <div class="reason-card">
+        <h4>5 · Egyoldalas indok</h4>
+        <p>Egy újságot is egy hosszú lapozással olvasol. A <b>single-page</b> formátum a brand-metaforát erősíti: <em>egy</em> kiadás, <em>egy</em> élmény. Multipage szétdarabolná az újság-érzetet.</p>
+      </div>
+      <div class="reason-card">
+        <h4>6 · Hosszú élet a marketingben</h4>
+        <p>Minden új étlap-edition (Edizia 12, 13...) <b>új launch-tartalom</b>: Facebook-poszt, oldalon hero-csere, hírlevél. A márka <b>periódikus megújulása</b> beépítve a koncepcióba.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="colophon">
+    <span>Vol. I · Moodboard v2 · Edizia a XII-a</span>
+    <span>Készítette: <b style="color:var(--hu-red);font-weight:400;">László Szabolcs</b></span>
+    <span>2026 · Aprilie · 27</span>
+  </div>
+</div>
+</body>
+</html>

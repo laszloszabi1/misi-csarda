@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Misi Csárda — Hagyományos magyar konyha és pizza · Marosszentgyörgy</title>
+<meta name="description" content="Misi Csárda — autentikus erdélyi és magyar konyha 2016 óta Marosszentgyörgyön. Foglalj asztalt, olvasd el a Misi Újság étlapunkat." />
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Crimson+Pro:ital,wght@0,300..700;1,300..700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:        #F4EDDD;
+    --paper-aged:   #E5D9C0;
+    --paper-wash:   #ECE0CC;
+    --paper-warm:   #FAF6ED;
+    --ink:          #1A1612;
+    --ink-deep:     #0E0B08;
+    --ink-mute:     #4A413A;
+    --ink-soft:     #6E6358;
+    --rule:         #2A211B;
+    --rule-soft:    #C4B79C;
+    --hu-red:       #B43227;
+    --hu-red-dark:  #842017;
+    --hu-green:     #2E4B36;
+    --gold:         #B58A47;
+    --logo-brown:   #4A2D20;
+    --shadow-edge:  0 1px 0 rgba(20,15,10,.18), 0 6px 14px rgba(20,15,10,.08);
+    --easing:       cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:auto}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto !important}
+  .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+  .lenis.lenis-stopped{overflow:hidden}
+  .lenis.lenis-smooth iframe{pointer-events:none}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Crimson Pro",Georgia,serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(180,50,39,.018) 0 36%, transparent 37%),
+      radial-gradient(circle at 88% 78%, rgba(46,75,54,.02) 0 40%, transparent 41%),
+      repeating-linear-gradient(0deg, rgba(20,15,10,.012) 0 1px, transparent 1px 3px);
+  }
+  ::selection{background:var(--hu-red);color:var(--paper)}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--easing),transform 1.2s var(--easing)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity 1s var(--easing),transform 1s var(--easing)}
+  .reveal-stagger.in > *{opacity:1;transform:translateY(0)}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:0s}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:.12s}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.24s}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:.36s}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.48s}
+  .reveal-stagger.in > *:nth-child(6){transition-delay:.6s}
+
+  /* NAV — nem fix, scrollozzon a tartalommal */
+  .nav{position:relative;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;padding:14px 56px;background:var(--paper);border-bottom:1px solid var(--rule-soft)}
+  .nav-left,.nav-right{display:flex;align-items:center;gap:28px}
+  .nav-left{justify-content:flex-end}
+  .nav-right{justify-content:flex-start}
+  .nav a.nav-link,.nav a.nav-center,.nav a.nav-cta{text-decoration:none}
+  .nav-center{display:flex;justify-content:center;align-items:center;text-decoration:none;flex-shrink:0}
+  .nav-center img{width:96px;height:96px;object-fit:contain;display:block;filter:drop-shadow(0 2px 6px rgba(20,15,10,.15))}
+  .nav a.nav-link{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);position:relative;padding:8px 2px;transition:color .55s cubic-bezier(.22,1,.36,1);text-decoration:none}
+  .nav a.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--hu-red);transform:scaleX(0);transform-origin:right center;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+  .nav a.nav-link:hover{color:var(--hu-red)}
+  .nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left center}
+  .nav a.nav-cta{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;background:var(--ink-deep);color:var(--paper) !important;padding:12px 22px;border:1px solid var(--ink-deep);transition:all .55s cubic-bezier(.22,1,.36,1);margin-left:12px;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center}
+  .nav a.nav-cta:hover{background:var(--hu-red-dark);border-color:var(--hu-red-dark);color:var(--paper) !important}
+  .nav-burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:8px;justify-self:end}
+  .nav-burger span{display:block;width:26px;height:2px;background:var(--ink);transition:all .3s var(--easing)}
+
+  /* OLDALSÓ ÚSZÓ MENÜ — section-indicator + scroll-to-top */
+  .side-nav{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:6px;align-items:center;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.22,1,.36,1)}
+  .side-nav.visible{opacity:1;pointer-events:auto}
+  .side-nav a{position:relative;display:flex;align-items:center;justify-content:center;width:36px;height:32px;text-decoration:none;color:var(--ink-mute);transition:color .4s cubic-bezier(.22,1,.36,1)}
+  .side-nav a .mark{display:block;width:18px;height:1.5px;background:var(--ink-mute);transition:width .5s cubic-bezier(.22,1,.36,1),background .4s,height .4s}
+  .side-nav a .lbl{position:absolute;right:38px;top:50%;transform:translateY(-50%) translateX(8px);background:var(--paper);color:var(--ink-deep);font-family:"Special Elite",monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--rule);box-shadow:0 4px 14px rgba(20,15,10,.12);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1)}
+  .side-nav a:hover .lbl{opacity:1;transform:translateY(-50%) translateX(0)}
+  .side-nav a:hover .mark{width:30px;background:var(--hu-red);height:2px}
+  .side-nav a.active .mark{width:30px;background:var(--hu-red);height:2.5px}
+  .side-nav a.active{color:var(--hu-red)}
+  .side-nav .top-btn{margin-bottom:18px;width:36px;height:34px;justify-content:center}
+  .side-nav .top-btn .arrow{width:30px;height:30px;border:1px solid var(--ink);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--paper);transition:all .55s cubic-bezier(.22,1,.36,1);color:var(--ink);box-shadow:0 2px 6px rgba(20,15,10,.06)}
+  .side-nav .top-btn .arrow svg{display:block;transition:transform .55s cubic-bezier(.22,1,.36,1)}
+  .side-nav .top-btn:hover .arrow{background:var(--hu-red);border-color:var(--hu-red);color:var(--paper);transform:translateY(-2px)}
+  .side-nav .top-btn:hover .arrow svg{transform:translateY(-1px)}
+
+  /* CONTAINER */
+  .wrap{max-width:1280px;margin:0 auto;padding:0 64px}
+  .wrap-narrow{max-width:1080px;margin:0 auto;padding:0 64px}
+
+  /* HERO / MASTHEAD */
+  .hero{padding:64px 64px 96px;border-bottom:1px solid var(--rule)}
+  .hero-banner{display:flex;justify-content:space-between;align-items:center;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);border-top:8px double var(--rule);padding-top:18px;margin-bottom:48px}
+  .hero-banner b{color:var(--hu-red);font-weight:400;letter-spacing:.28em}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+  .hero-eyebrow{font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--hu-red);margin-bottom:18px}
+  .hero-h1{font-family:"Source Serif 4",serif;font-weight:900;font-size:clamp(44px,5.4vw,76px);line-height:1;letter-spacing:-.018em;color:var(--ink-deep);margin-bottom:24px}
+  .hero-h1 em{font-style:italic;font-weight:500;color:var(--hu-red)}
+  .hero-lead{font-family:"Crimson Pro",serif;font-size:22px;line-height:1.55;color:var(--ink);max-width:520px;margin-bottom:32px}
+  .hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;border:0;background:none;text-decoration:none;transition:all .35s var(--easing)}
+  .btn-primary{background:var(--ink-deep);color:var(--paper);border:1px solid var(--ink-deep)}
+  .btn-primary:hover{background:var(--hu-red-dark);border-color:var(--hu-red-dark);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+  .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;padding-top:24px;border-top:1px solid var(--rule-soft)}
+  .hero-meta-item{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);line-height:1.55}
+  .hero-meta-item b{display:block;color:var(--ink-deep);font-weight:400;font-size:13px;letter-spacing:.18em;margin-bottom:4px}
+
+  /* HERO RIGHT — front page photo article */
+  .hero-right{position:relative}
+  .news-card{background:var(--paper-warm);border:1px solid var(--rule);box-shadow:var(--shadow-edge);padding:0;position:relative;overflow:hidden}
+  .nc-photo{width:100%;aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--rule);position:relative}
+  .nc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 12s var(--easing)}
+  .nc-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0) 60%,rgba(20,15,10,.18) 100%);pointer-events:none}
+  .nc-stamp{display:inline-block;border:2px solid var(--hu-red);color:var(--hu-red);padding:5px 12px;transform:rotate(-3deg);font-family:"Special Elite",monospace;font-size:9px;letter-spacing:.3em;background:rgba(244,237,221,.95);position:absolute;top:14px;right:14px;z-index:2}
+  .nc-body{padding:28px 32px 32px}
+  .nc-header{display:flex;justify-content:space-between;align-items:baseline;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--hu-red);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:18px}
+  .nc-title{font-family:"Source Serif 4",serif;font-weight:800;font-size:26px;line-height:1.18;letter-spacing:-.01em;color:var(--ink-deep);margin-bottom:14px}
+  .nc-title em{font-style:italic;color:var(--hu-red)}
+  .nc-excerpt{font-family:"Crimson Pro",serif;font-size:15.5px;line-height:1.6;color:var(--ink);margin-bottom:16px}
+  .nc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px dashed var(--rule-soft);padding-top:14px;font-family:"Crimson Pro",serif;font-size:13.5px}
+  .nc-row b{display:block;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;color:var(--hu-red);margin-bottom:4px;font-weight:400}
+  .nc-row span{font-style:italic;color:var(--ink-mute)}
+
+  /* SECTION HEADERS */
+  section{padding:100px 0}
+  section.dark{background:var(--ink-deep);color:var(--paper)}
+  .sec-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;border-bottom:2px solid var(--rule);padding-bottom:14px;margin-bottom:48px}
+  .dark .sec-head{border-bottom-color:var(--paper-aged)}
+  .sec-num{font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.3em;color:var(--hu-red);text-transform:uppercase;padding-bottom:6px}
+  .sec-title{font-family:"Source Serif 4",serif;font-weight:800;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-.018em;color:var(--ink-deep)}
+  .dark .sec-title{color:var(--paper)}
+  .sec-aux{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;color:var(--ink-mute);text-transform:uppercase;padding-bottom:10px}
+  .dark .sec-aux{color:var(--paper-aged)}
+
+  /* HISTORY ARTICLE */
+  .history{padding:120px 0}
+  .history-article{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:64px}
+  .history-article p{font-size:17.5px;line-height:1.75;color:var(--ink);margin-bottom:16px;text-align:justify;hyphens:auto}
+  .history-article p:first-child::first-letter{font-family:"Source Serif 4",serif;font-weight:900;font-size:80px;line-height:.85;float:left;padding:8px 16px 0 0;color:var(--hu-red)}
+  .history-article .col{padding-right:32px;border-right:1px solid var(--rule-soft)}
+  .history-article .col:last-child{padding-right:0;border-right:none}
+  .pull-quote{font-family:"Source Serif 4",serif;font-style:italic;font-weight:500;font-size:24px;line-height:1.35;border-left:3px solid var(--hu-red);padding:6px 0 6px 22px;color:var(--ink-deep);margin:18px 0}
+  .history-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;border-top:4px double var(--rule);border-bottom:4px double var(--rule);padding:32px 0}
+  .h-stat{text-align:center}
+  .h-stat .num{font-family:"Source Serif 4",serif;font-weight:900;font-size:64px;line-height:1;color:var(--hu-red);letter-spacing:-.02em}
+  .h-stat .lbl{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);margin-top:10px;display:block}
+
+  /* MENU SECTION */
+  .menu-wrap{padding:120px 64px;background:var(--paper-aged);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .menu-tabs{display:flex;gap:0;flex-wrap:wrap;justify-content:center;margin-bottom:48px;border-bottom:2px solid var(--rule)}
+  .menu-tab{font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);padding:14px 22px;background:none;border:0;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .35s var(--easing);position:relative}
+  .menu-tab:hover{color:var(--ink-deep)}
+  .menu-tab.active{color:var(--hu-red);border-bottom-color:var(--hu-red);font-weight:bold}
+  /* Étlap-tabok — sima crossfade in és out */
+  .menu-stack{display:grid}
+  .menu-stack > .menu-panel{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),visibility 0s linear .6s}
+  .menu-stack > .menu-panel.active{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+  .menu-col{display:flex;flex-direction:column;gap:18px}
+  .menu-item{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px dotted var(--rule-soft);position:relative}
+  .menu-item:hover{padding-left:8px;transition:padding-left .35s var(--easing)}
+  .menu-item-name{font-family:"Source Serif 4",serif;font-weight:700;font-size:18px;color:var(--ink-deep);margin-bottom:4px}
+  .menu-item-meta{font-family:"Crimson Pro",serif;font-style:italic;font-size:14px;color:var(--ink-mute);line-height:1.4}
+  .menu-item-price{font-family:"Special Elite",monospace;font-size:14px;color:var(--ink-deep);white-space:nowrap}
+  .menu-note{font-family:"Crimson Pro",serif;font-style:italic;font-size:14px;color:var(--ink-mute);text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--rule-soft)}
+
+  /* SIGNATURE */
+  .signature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .sig-card{background:var(--paper-warm);border:1px solid var(--rule);padding:0;display:flex;flex-direction:column;gap:0;box-shadow:var(--shadow-edge);transition:transform .5s var(--easing),box-shadow .5s var(--easing);overflow:hidden}
+  .sig-card:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(20,15,10,.18),0 18px 32px rgba(20,15,10,.12)}
+  .sig-card:hover .sig-photo img{transform:scale(1.04);filter:brightness(1.04)}
+  .sig-card.feature{grid-column:span 2;background:linear-gradient(135deg,var(--ink-deep) 0%,#2a1f17 100%);color:var(--paper);border-color:var(--ink-deep)}
+  .sig-photo{width:100%;aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--rule)}
+  .sig-card.feature .sig-photo{aspect-ratio:16/10;border-bottom:1px solid rgba(245,239,221,.2)}
+  .sig-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 2.4s var(--easing),filter 2.4s var(--easing)}
+  .sig-body{padding:28px 28px 24px;display:flex;flex-direction:column;gap:16px;flex:1}
+  .sig-rank{display:flex;align-items:center;gap:12px;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--hu-red)}
+  .sig-rank::before{content:"";width:32px;height:1px;background:var(--hu-red)}
+  .sig-name{font-family:"Source Serif 4",serif;font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.012em;color:var(--ink-deep)}
+  .sig-card.feature .sig-name{color:var(--paper);font-size:36px}
+  .sig-name em{font-style:italic;color:var(--hu-red);font-weight:500}
+  .sig-desc{font-family:"Crimson Pro",serif;font-size:16px;line-height:1.6;color:var(--ink-mute);flex:1}
+  .sig-card.feature .sig-desc{color:var(--paper-aged)}
+  .sig-foot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--rule-soft);padding-top:14px;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+  .sig-card.feature .sig-foot{border-top-color:rgba(245,239,221,.2);color:var(--paper-aged)}
+  .sig-foot .price{color:var(--hu-red);font-size:14px}
+
+  /* DRINKS — dark section */
+  .drinks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+  .drink-col h3{font-family:"Source Serif 4",serif;font-weight:700;font-size:24px;color:var(--paper);letter-spacing:-.01em;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(245,239,221,.18)}
+  .drink-col h3 em{font-style:italic;color:var(--hu-red);font-weight:400;font-size:.7em;display:block;margin-top:4px;letter-spacing:.04em}
+  .drink-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px dotted rgba(245,239,221,.14)}
+  .drink-row:last-child{border-bottom:0}
+  .drink-row .nm{font-family:"Crimson Pro",serif;font-size:16px;color:var(--paper)}
+  .drink-row .vol{font-family:"Crimson Pro",serif;font-style:italic;font-size:13px;color:var(--paper-aged);display:block;margin-top:2px}
+  .drink-row .pr{font-family:"Special Elite",monospace;font-size:13px;color:var(--hu-red);letter-spacing:.1em}
+  .csiki-feat{margin-top:48px;padding:32px;background:linear-gradient(135deg,#7a1f17 0%,#3a100c 100%);border:1px solid var(--hu-red);display:grid;grid-template-columns:1fr 1.5fr;gap:32px;align-items:center}
+  .csiki-feat-label{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.26em;color:var(--paper-aged);text-transform:uppercase;margin-bottom:10px}
+  .csiki-feat-name{font-family:"Source Serif 4",serif;font-weight:800;font-size:36px;color:var(--paper);line-height:1.1;letter-spacing:-.015em;margin-bottom:14px}
+  .csiki-feat-desc{font-family:"Crimson Pro",serif;font-size:17px;line-height:1.55;color:var(--paper-aged)}
+  .csiki-feat .csiki-meta{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;color:var(--paper);text-transform:uppercase;text-align:right}
+  .csiki-feat .csiki-meta b{display:block;font-family:"Source Serif 4",serif;font-weight:700;font-size:32px;color:var(--paper);margin-bottom:4px}
+
+  /* EVENTS SECTION */
+  .events-section{padding:130px 0;background:var(--paper-aged);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .events-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+  .events-text{padding-right:24px}
+  .events-eyebrow{font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--hu-red);margin-bottom:14px}
+  .events-h2{font-family:"Source Serif 4",serif;font-weight:800;font-size:clamp(36px,4.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink-deep);margin-bottom:22px}
+  .events-h2 em{font-style:italic;color:var(--hu-red);font-weight:500}
+  .events-lead{font-family:"Crimson Pro",serif;font-size:18px;line-height:1.65;color:var(--ink);margin-bottom:24px}
+  .events-list{list-style:none;border-top:1px dashed var(--rule);padding-top:18px}
+  .events-list li{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:12px 0;border-bottom:1px dashed var(--rule-soft);font-family:"Crimson Pro",serif;font-size:16px}
+  .events-list li b{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--hu-red);font-weight:400;white-space:nowrap;align-self:baseline;padding-top:3px}
+  .events-list li span{color:var(--ink)}
+  .events-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:520px}
+  .events-photos > div{overflow:hidden;border:1px solid var(--rule);position:relative}
+  .events-photos > div::after{content:attr(data-cap);position:absolute;bottom:8px;left:8px;background:rgba(244,237,221,.92);color:var(--ink-deep);padding:4px 9px;font-family:"Special Elite",monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--rule)}
+  .events-photos > div:first-child{grid-row:span 2}
+  .events-photos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 4s var(--easing)}
+  .events-photos > div:hover img{transform:scale(1.04)}
+
+  /* GALLERY — egységes 4×2 rács */
+  .gallery{padding:120px 0}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:14px}
+  .gal-tile{position:relative;overflow:hidden;border:1px solid var(--rule);display:flex;align-items:flex-end;padding:0;color:var(--paper);transition:transform .6s var(--easing);cursor:pointer}
+  .gal-tile:hover{transform:scale(1.012)}
+  .gal-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 2.4s var(--easing),filter 2.4s var(--easing);filter:brightness(.96)}
+  .gal-tile:hover img{transform:scale(1.05);filter:brightness(1.05)}
+  .gal-tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0) 50%,rgba(20,15,10,.65) 100%);z-index:1;pointer-events:none;opacity:0;transition:opacity .4s var(--easing)}
+  .gal-tile:hover::before{opacity:1}
+  .gal-tile .tile-cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;font-family:"Special Elite",monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);text-shadow:0 1px 4px rgba(0,0,0,.85);transform:translateY(8px);opacity:0;transition:transform .4s var(--easing),opacity .4s var(--easing)}
+  .gal-tile:hover .tile-cap{transform:translateY(0);opacity:1}
+  .gal-tile .tile-stamp{position:absolute;top:12px;right:14px;font-family:"Special Elite",monospace;font-size:9px;letter-spacing:.3em;color:rgba(245,239,221,.95);text-transform:uppercase;border:1px solid rgba(245,239,221,.4);padding:3px 8px;z-index:2;background:rgba(20,15,10,.35);backdrop-filter:blur(4px)}
+  .gal-tile.feature{grid-column:span 2;grid-row:span 2}
+
+  /* BOOKING — dark, full-width parallax style */
+  .booking-section{padding:130px 64px;background:linear-gradient(135deg,#1A1612 0%,#0E0B08 100%);color:var(--paper);position:relative;overflow:hidden;border-top:8px double var(--hu-red);border-bottom:8px double var(--hu-red)}
+  .booking-section::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(180,50,39,.08) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(180,138,71,.06) 0%,transparent 50%);pointer-events:none}
+  .booking-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start;position:relative}
+  .booking-eyebrow{font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--hu-red);margin-bottom:16px}
+  .booking-h2{font-family:"Source Serif 4",serif;font-weight:800;font-size:clamp(42px,5vw,68px);line-height:1.02;letter-spacing:-.02em;color:var(--paper);margin-bottom:24px}
+  .booking-h2 em{font-style:italic;color:var(--hu-red);font-weight:500}
+  .booking-lead{font-family:"Crimson Pro",serif;font-size:19px;line-height:1.6;color:var(--paper-aged);margin-bottom:32px}
+  .booking-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-top:24px;border-top:1px solid rgba(245,239,221,.15)}
+  .booking-meta b{display:block;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.24em;color:var(--hu-red);text-transform:uppercase;margin-bottom:6px}
+  .booking-meta span{font-family:"Crimson Pro",serif;font-size:15px;color:var(--paper);line-height:1.45}
+  .booking-form{background:var(--paper-warm);color:var(--ink);padding:40px;border:1px solid var(--rule);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .form-banner{display:flex;justify-content:space-between;align-items:baseline;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--hu-red);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:24px}
+  .form-title{font-family:"Source Serif 4",serif;font-weight:800;font-size:26px;letter-spacing:-.01em;color:var(--ink-deep);margin-bottom:6px}
+  .form-sub{font-family:"Crimson Pro",serif;font-style:italic;font-size:15px;color:var(--ink-mute);margin-bottom:28px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .form-row.full{grid-template-columns:1fr}
+  .form-field{display:flex;flex-direction:column;gap:6px}
+  .form-field label{font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+  .form-field input,.form-field select,.form-field textarea{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-family:"Crimson Pro",serif;font-size:16px;color:var(--ink-deep);transition:border-color .3s var(--easing)}
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--hu-red)}
+  .form-field textarea{resize:vertical;min-height:90px}
+  .form-submit{width:100%;margin-top:8px;justify-content:center;cursor:pointer;font-size:13px;padding:18px 28px}
+  .form-foot{font-family:"Crimson Pro",serif;font-style:italic;font-size:13px;color:var(--ink-mute);margin-top:18px;text-align:center}
+
+  /* CONTACT */
+  .contact-section{padding:120px 0 100px}
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+  .contact-info h3{font-family:"Source Serif 4",serif;font-weight:700;font-size:22px;color:var(--ink-deep);margin-bottom:14px;letter-spacing:-.01em}
+  .contact-block{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--rule-soft)}
+  .contact-block:last-child{border-bottom:none}
+  .contact-row{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:baseline;padding:8px 0}
+  .contact-row b{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.22em;color:var(--hu-red);text-transform:uppercase;font-weight:400}
+  .contact-row span{font-family:"Crimson Pro",serif;font-size:17px;color:var(--ink);line-height:1.5}
+  .contact-row a{color:var(--ink-deep);text-decoration:none;border-bottom:1px solid var(--rule-soft);transition:border-color .3s var(--easing)}
+  .contact-row a:hover{border-color:var(--hu-red)}
+  .map-card{background:var(--paper-warm);border:1px solid var(--rule);box-shadow:var(--shadow-edge);padding:8px}
+  .map-iframe{width:100%;height:480px;border:0;display:block}
+  .map-caption{padding:14px 12px 6px;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);display:flex;justify-content:space-between}
+
+  /* FOOTER */
+  footer{background:var(--ink-deep);color:var(--paper-aged);padding:64px 64px 28px;border-top:8px double var(--hu-red)}
+  .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+  .footer-brand{display:flex;flex-direction:column;gap:18px}
+  .f-seal{width:108px;height:108px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(180,138,71,.2),0 8px 20px rgba(0,0,0,.4)}
+  .f-seal img{width:92px;height:92px;object-fit:contain}
+  .footer-brand p{font-family:"Crimson Pro",serif;font-size:14px;line-height:1.55;color:var(--paper-aged);max-width:280px}
+  .footer-col h4{font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.26em;color:var(--hu-red);text-transform:uppercase;margin-bottom:14px}
+  .footer-col a,.footer-col li{font-family:"Crimson Pro",serif;font-size:15px;color:var(--paper);text-decoration:none;line-height:1.9;list-style:none;display:block;transition:color .3s var(--easing)}
+  .footer-col a:hover{color:var(--hu-red)}
+  .footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid rgba(245,239,221,.15);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-aged)}
+
+  /* MOBILE */
+  @media (max-width:980px){
+    .nav{grid-template-columns:auto 1fr auto;padding:10px 20px;gap:12px;position:sticky;top:0}
+    .nav-left{display:none}
+    .nav-right{display:none;position:fixed;top:0;left:0;right:0;background:var(--paper);flex-direction:column;padding:120px 32px 48px;gap:20px;align-items:flex-start;box-shadow:0 12px 30px rgba(0,0,0,.15);transform:translateY(-100%);transition:transform .5s var(--easing);justify-content:flex-start;z-index:55}
+    .nav-right.open{display:flex;transform:translateY(0)}
+    .nav-center{justify-self:start}
+    .nav-center img{width:72px;height:72px}
+    .side-nav{display:none}
+    .nav-cta{display:none}
+    .nav-right .nav-cta{display:inline-flex;margin-left:0}
+    .nav-burger{display:flex;z-index:60}
+    .wrap,.wrap-narrow,.menu-wrap,.booking-section{padding-left:24px;padding-right:24px}
+    .hero{padding:32px 24px 60px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-left{text-align:left}
+    .hero-cta-row{justify-content:flex-start}
+    .hero-meta{grid-template-columns:1fr}
+    .hero-banner{flex-direction:column;gap:6px;text-align:center}
+    .hero-h1{font-size:42px}
+    .nc-stamp{right:8px;top:-14px}
+    .history-article{grid-template-columns:1fr;gap:18px}
+    .history-article .col{border-right:none;border-bottom:1px solid var(--rule-soft);padding-right:0;padding-bottom:14px}
+    .history-stats{grid-template-columns:repeat(2,1fr);gap:24px}
+    .h-stat .num{font-size:48px}
+    .menu-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+    .menu-tab{flex-shrink:0;padding:12px 16px}
+    .menu-grid{grid-template-columns:1fr;gap:24px}
+    .signature-grid{grid-template-columns:1fr}
+    .sig-card.feature{grid-column:span 1}
+    .sig-card.feature .sig-name{font-size:30px}
+    .sig-card.feature .sig-photo{aspect-ratio:4/3}
+    .sig-body{padding:22px 22px 20px}
+    .events-grid{grid-template-columns:1fr;gap:36px}
+    .events-text{padding-right:0}
+    .events-h2{font-size:32px}
+    .events-photos{height:auto;grid-template-rows:auto auto;gap:10px}
+    .events-photos > div{aspect-ratio:4/3}
+    .events-photos > div:first-child{grid-row:span 1}
+    .drinks-grid{grid-template-columns:1fr;gap:36px}
+    .csiki-feat{grid-template-columns:1fr;gap:18px;text-align:center}
+    .csiki-feat .csiki-meta{text-align:center}
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+    .gal-tile.feature{grid-column:span 2;grid-row:span 1}
+    .gal-tile .tile-cap{transform:translateY(0);opacity:1;background:linear-gradient(180deg,transparent 0%,rgba(20,15,10,.7) 100%);left:0;right:0;bottom:0;padding:14px}
+    .gal-tile::before{opacity:1}
+    .booking-grid{grid-template-columns:1fr;gap:48px}
+    .booking-form{padding:28px 24px}
+    .form-row{grid-template-columns:1fr;gap:14px}
+    .booking-h2{font-size:38px}
+    .contact-grid{grid-template-columns:1fr;gap:48px}
+    .contact-row{grid-template-columns:1fr;gap:4px;padding:10px 0;border-bottom:1px dashed var(--rule-soft)}
+    .map-iframe{height:360px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+    .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+    .sec-head{grid-template-columns:1fr;gap:6px}
+    section{padding:72px 0}
+    .booking-section{padding:80px 24px}
+    .menu-wrap{padding:80px 24px}
+    footer{padding:48px 24px 24px}
+  }
+  @media (max-width:520px){
+    .footer-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+    .gal-tile.feature{grid-column:span 1;grid-row:span 1}
+    .nav-logo .nl-text{font-size:16px}
+    .hero-h1{font-size:36px}
+    .booking-h2{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV — logó középen, menü L/R splitben -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a class="nav-link" href="#tortenet">Történet</a>
+    <a class="nav-link" href="#etlap">Étlap</a>
+    <a class="nav-link" href="#kedvencek">Kedvencek</a>
+    <a class="nav-link" href="#italok">Italok</a>
+  </div>
+  <a class="nav-center" href="#top" aria-label="Misi Csárda — kezdőlap">
+    <img src="logo.png" alt="Misi Csárda — Hagyományos magyar konyha és pizza, 2016 óta">
+  </a>
+  <div class="nav-right" id="navMenu">
+    <a class="nav-link" href="#vendegekert">Vendégekért</a>
+    <a class="nav-link" href="#galeria">Galéria</a>
+    <a class="nav-link" href="#kontakt">Kapcsolat</a>
+    <a href="#foglalas" class="nav-cta">Asztalt foglalok</a>
+  </div>
+  <button class="nav-burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- OLDALSÓ ÚSZÓ MENÜ -->
+<aside class="side-nav" id="sideNav" aria-label="Oldal-navigáció">
+  <a class="top-btn" href="#top" data-section="top" aria-label="Tetejére"><span class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 7.5L6 4.5L9 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <a href="#tortenet" data-section="tortenet"><span class="lbl">Történet</span><span class="mark"></span></a>
+  <a href="#etlap" data-section="etlap"><span class="lbl">Étlap</span><span class="mark"></span></a>
+  <a href="#kedvencek" data-section="kedvencek"><span class="lbl">Kedvencek</span><span class="mark"></span></a>
+  <a href="#italok" data-section="italok"><span class="lbl">Italok</span><span class="mark"></span></a>
+  <a href="#vendegekert" data-section="vendegekert"><span class="lbl">Vendégekért</span><span class="mark"></span></a>
+  <a href="#galeria" data-section="galeria"><span class="lbl">Galéria</span><span class="mark"></span></a>
+  <a href="#foglalas" data-section="foglalas"><span class="lbl">Foglalás</span><span class="mark"></span></a>
+  <a href="#kontakt" data-section="kontakt"><span class="lbl">Kapcsolat</span><span class="mark"></span></a>
+</aside>
+
+<!-- HERO / MASTHEAD -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-banner reveal">
+      <span><b>MISI ÚJSÁG</b> · A konyha hivatalos lapja</span>
+      <span>Marosszentgyörgy · Maros megye</span>
+      <span>Alapítva <b>2016</b></span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-left reveal">
+        <div class="hero-eyebrow">12. kiadás · 2026 április</div>
+        <h1 class="hero-h1">A jó étel <em>nem siet.</em><br>Sem mi.</h1>
+        <p class="hero-lead">A Misi Csárda 2016 óta tálal autentikus erdélyi és magyaros fogásokat Marosszentgyörgyön. Recepteink családi öröklődésből származnak — minden adag kézzel készül, friss alapanyagokból.</p>
+        <div class="hero-cta-row">
+          <a href="#foglalas" class="btn btn-primary">Asztalt foglalok</a>
+          <a href="#etlap" class="btn btn-ghost">Étlapot olvasok</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <b>Nyitva tartás</b>
+            Hétfő–Szombat · 07:00 — 22:00<br>
+            Vasárnap · 09:00 — 21:00
+          </div>
+          <div class="hero-meta-item">
+            <b>Elérhetőség</b>
+            +40 265 333 444<br>
+            Erdély utca 224/A
+          </div>
+        </div>
+      </div>
+      <div class="hero-right reveal">
+        <div class="news-card">
+          <div class="nc-photo">
+            <img src="images/event-celebration.jpg" alt="Misi Csárda — hosszú ünnepi asztal kockás abrosszal, virággal és kerámia tányérokkal">
+            <div class="nc-stamp">Frissen nyomva</div>
+          </div>
+          <div class="nc-body">
+            <div class="nc-header">
+              <span>1. oldal · Vezércikk</span>
+              <span>2026. április 27.</span>
+            </div>
+            <h2 class="nc-title">Az ünnep <em>már megterítve.</em></h2>
+            <p class="nc-excerpt">Kockás abrosz, friss virágok, kerámia tányérok — minden vendéghez egy mosoly. A Misi Csárda nem szervírozik, hanem <b>fogad</b>: úgy, ahogy nagymama tenné.</p>
+            <div class="nc-row">
+              <div>
+                <b>Mai különlegesség</b>
+                <span>Erdélyi savanyúleves · 22 lej</span>
+              </div>
+              <div>
+                <b>Hangulat</b>
+                <span>Tradíció és magyar derű</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TÖRTÉNET -->
+<section class="history" id="tortenet">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">2. oldal</span>
+      <h2 class="sec-title">A történetünk</h2>
+      <span class="sec-aux">Vezércikk · ~4 perc olvasás</span>
+    </div>
+    <div class="history-article reveal-stagger">
+      <div class="col">
+        <p>A <b>Misi Csárda</b> 2016-ban nyitotta meg kapuit Marosszentgyörgyön, az Erdély utca 224/A szám alatt. A koncepció egyszerű volt: olyan ételeket tálalni, amilyeneket a nagymama főzött vasárnap délben — semmi extra, semmi modernizálás, csak hagyomány.</p>
+        <p>A receptek <em>generációról generációra</em> öröklődtek. Az erdélyi savanyúleves, a juhtúrós puliszka, a mititei mustárral — minden tálalt fogás mögött egy családi szakácskönyv áll, melynek margóira évek óta jegyzetelnek a szakácsaink.</p>
+      </div>
+      <div class="col">
+        <p>A belső tér rusztikus, fa-asztalokkal és vintage-tárgyakkal berendezve. A pizza-kemence olasz mintára készült, a borok java erdélyi és moldvai pincékből érkezik — Purcari, Cricova, Villa Vinea, Tokaji.</p>
+        <p class="pull-quote">A Misi Csárdánál a türelem nem hiba, hanem hagyomány.</p>
+        <p>A vendégkör vegyes: helyi családok, akik szombatonként nagy asztalt foglalnak, és átutazó turisták, akik az autentikus erdélyi konyhát keresik. Mindkettőnek ugyanaz az élmény jut: lassú, alapos, igazi étel.</p>
+      </div>
+      <div class="col">
+        <p>A „Misi Újság" koncepció 2018-ban született meg, amikor az étlap egyszerű háromoldalasból 11. kiadássá nőtte ki magát. Minden új kiadás új fogásokat, új allergén-jelöléseket, új italokat hoz.</p>
+        <p>A Julius Meinl kávé, a <em>Tiltott Csíki Sör</em>, a <em>Glodeni-i prémium pálinka</em> — minden italválasztás mögött egy tudatos döntés áll: <b>autentikus, regionális, prémium</b>.</p>
+        <p>2024 februárjában került ki a 11. kiadás, és most, 2026 áprilisában készül a 12. — új jelölt fogásokkal, friss borokkal, új évszaki különlegességekkel.</p>
+      </div>
+    </div>
+    <div class="history-stats reveal-stagger">
+      <div class="h-stat"><div class="num">2016</div><span class="lbl">Az alapítás éve</span></div>
+      <div class="h-stat"><div class="num">11</div><span class="lbl">Étlap-kiadás</span></div>
+      <div class="h-stat"><div class="num">80+</div><span class="lbl">Fogás az étlapon</span></div>
+      <div class="h-stat"><div class="num">∞</div><span class="lbl">Türelem</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉTLAP -->
+<div class="menu-wrap" id="etlap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">3. oldal</span>
+      <h2 class="sec-title">Az étlap</h2>
+      <span class="sec-aux">Misi Újság · 12. kiadás · friss</span>
+    </div>
+    <div class="menu-tabs reveal" role="tablist">
+      <button class="menu-tab active" data-tab="ciorbe">Levesek</button>
+      <button class="menu-tab" data-tab="salate">Saláták</button>
+      <button class="menu-tab" data-tab="grill">Grill &amp; Húsok</button>
+      <button class="menu-tab" data-tab="pizza">Pizza</button>
+      <button class="menu-tab" data-tab="garnituri">Köretek</button>
+      <button class="menu-tab" data-tab="desert">Desszertek</button>
+      <button class="menu-tab" data-tab="platouri">Tálak</button>
+    </div>
+
+    <div class="menu-stack">
+    <div class="menu-panel active" data-panel="ciorbe">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Erdélyi savanyúleves</div><div class="menu-item-meta">tejföllel külön · 350 + 50 g</div></div><span class="menu-item-price">22 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Paraszti leves</div><div class="menu-item-meta">tejföllel · 350 + 50 g</div></div><span class="menu-item-price">22 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Vörös kerti leves</div><div class="menu-item-meta">paradicsom-zöldség · 400 g</div></div><span class="menu-item-price">22 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Pacalleves</div><div class="menu-item-meta">a klasszikus · 300 + 130 g</div></div><span class="menu-item-price">28 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Tejföl külön</div><div class="menu-item-meta">50 g</div></div><span class="menu-item-price">5 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Házi kenyér</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">6 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Friss csilipaprika</div><div class="menu-item-meta">1 db</div></div><span class="menu-item-price">2 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Savanyított csilipaprika</div><div class="menu-item-meta">30 g</div></div><span class="menu-item-price">6 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="salate">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Misi-saláta <span style="color:var(--hu-red);font-size:11px;letter-spacing:.2em;font-family:'Special Elite',monospace;text-transform:uppercase;">★ jelölt</span></div><div class="menu-item-meta">csirkemell · sült burgonyaszálak · jégsaláta · 400 g</div></div><span class="menu-item-price">36 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Cézár-saláta</div><div class="menu-item-meta">jégsaláta · bacon · csirkemell · cézár szósz · kruton · 400 g</div></div><span class="menu-item-price">34 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Görög saláta</div><div class="menu-item-meta">jégsaláta · juhsajt · olajbogyó · 400 g</div></div><span class="menu-item-price">30 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Vegyes friss saláta</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">12 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Paradicsomsaláta juhsajttal</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">13 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Káposztasaláta</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">10 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="grill">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Csirke borzoska <span style="color:var(--hu-red);font-size:11px;letter-spacing:.2em;font-family:'Special Elite',monospace;text-transform:uppercase;">★ jelölt</span></div><div class="menu-item-meta">a ház specialitása · 250 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Grillezett tarja</div><div class="menu-item-meta">sertés · 250 g</div></div><span class="menu-item-price">34 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Fonott szűzpecsenye</div><div class="menu-item-meta">230 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Cordon bleu</div><div class="menu-item-meta">a klasszikus · 250 g</div></div><span class="menu-item-price">40 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Rántott csirkemell</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">33 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Sült csülök</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">34 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Grillezett csirkemell</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">34 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Szezámmagos csirkemell</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">41 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Grillezett pulykamell</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">41 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Cigánypecsenye</div><div class="menu-item-meta">tarja + szalonna · 250 g</div></div><span class="menu-item-price">42 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">BBQ csirkeszárny csípősen</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">37 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Vajban sült lazac</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">54 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="pizza">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Misi pizza <span style="color:var(--hu-red);font-size:11px;letter-spacing:.2em;font-family:'Special Elite',monospace;text-transform:uppercase;">★ jelölt</span></div><div class="menu-item-meta">sonka · csípős szalámi · hagyma · paprika · kukorica · 650 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Margherita</div><div class="menu-item-meta">paradicsom · mozzarella · bazsalikom · 510 g</div></div><span class="menu-item-price">32 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Diavola</div><div class="menu-item-meta">csípős szalámi · 580 g</div></div><span class="menu-item-price">38 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Prosciutto</div><div class="menu-item-meta">sonka · mozzarella · 560 g</div></div><span class="menu-item-price">35 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Prosciutto e funghi</div><div class="menu-item-meta">sonka · gomba · 650 g</div></div><span class="menu-item-price">36 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Capricciosa</div><div class="menu-item-meta">sonka · paprika · olajbogyó · 600 g</div></div><span class="menu-item-price">36 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Quattro formaggi</div><div class="menu-item-meta">4-sajtos · mozzarella · trappista · gorgonzola · parmezán · 550 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Quattro carni</div><div class="menu-item-meta">4-húsos · sonka · szalámi · kolbász · prosciutto · 680 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Quattro stagioni</div><div class="menu-item-meta">4 évszak · sonka · szalámi · paprika · gomba · 680 g</div></div><span class="menu-item-price">42 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Csirkés pizza</div><div class="menu-item-meta">csirkemell · 680 g</div></div><span class="menu-item-price">43 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Vegetáriánus pizza</div><div class="menu-item-meta">paprika · borsó · olajbogyó · kukorica · 600 g</div></div><span class="menu-item-price">35 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Prosciutto Olive</div><div class="menu-item-meta">sonka · olajbogyó · 620 g</div></div><span class="menu-item-price">36 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="garnituri">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Hasábburgonya</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">11 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Sajtos hasábburgonya</div><div class="menu-item-meta">250 g</div></div><span class="menu-item-price">14 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Steakburgonya</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">13 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Főtt burgonya</div><div class="menu-item-meta">250 g</div></div><span class="menu-item-price">14 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Rozmaringos burgonya</div><div class="menu-item-meta">250 g</div></div><span class="menu-item-price">14 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Rizs</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">12 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Mexikói zöldség</div><div class="menu-item-meta">200 g</div></div><span class="menu-item-price">15 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Savanyú uborka</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">10 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Cékla</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">12 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Sült paprika</div><div class="menu-item-meta">150 g</div></div><span class="menu-item-price">13 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Hagymasaláta</div><div class="menu-item-meta">100 g</div></div><span class="menu-item-price">6 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Fokhagyma · édes-csípős szósz</div><div class="menu-item-meta">80 g</div></div><span class="menu-item-price">5 — 6,50 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="desert">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Eszterházy palacsinta <span style="color:var(--hu-red);font-size:11px;letter-spacing:.2em;font-family:'Special Elite',monospace;text-transform:uppercase;">★ jelölt</span></div><div class="menu-item-meta">tehéntúró · mazsola · vaníliamártás · 350 g</div></div><span class="menu-item-price">31 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Papanași áfonyalekvárral</div><div class="menu-item-meta">tejföllel · 400 g</div></div><span class="menu-item-price">37 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Szilvás gombóc</div><div class="menu-item-meta">300 g</div></div><span class="menu-item-price">29 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Lava cake</div><div class="menu-item-meta">vanília fagylalttal · 150 g</div></div><span class="menu-item-price">23 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Édes palacsinta</div><div class="menu-item-meta">áfonya · nutella · sárgabarack · eper · 210 g</div></div><span class="menu-item-price">19 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Melba</div><div class="menu-item-meta">3 fagyigömb választás szerint · 150 g</div></div><span class="menu-item-price">18 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="platouri">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Misi kedvence <span style="color:var(--hu-red);font-size:11px;letter-spacing:.2em;font-family:'Special Elite',monospace;text-transform:uppercase;">★ jelölt</span></div><div class="menu-item-meta">1 fő · tarja · kolbász · szalonna · burgonya · káposzta · 350+200+150 g</div></div><span class="menu-item-price">63 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Paraszti tál</div><div class="menu-item-meta">2 fő · cigánypecsenye · csülök · kolbász · steakburgonya · uborka · 650+400+50 g</div></div><span class="menu-item-price">113 lej</span></div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item"><div><div class="menu-item-name">Vegyes tál</div><div class="menu-item-meta">2 fő · csirkemell · nuggets · csirkeszárny · rántott sajt · burgonya · szósz · 450+125+400+100 g</div></div><span class="menu-item-price">110 lej</span></div>
+          <div class="menu-item"><div><div class="menu-item-name">Ropogós csirke menü</div><div class="menu-item-meta">1 fő · ropogós csirke · hasábburgonya · fokhagyma szósz · 200+200+50 g</div></div><span class="menu-item-price">39 lej</span></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <p class="menu-note">Az árak <b>mindenkire érvényesek</b>, a 12. kiadás (2026. április) szerint. Allergén-jelölések és tápérték-adatok a teljes étlapon — kérd a felszolgálótól, vagy <a href="MENUZIAR.pdf" style="color:var(--hu-red)">olvasd el itt PDF-ben</a>.</p>
+  </div>
+</div>
+
+<!-- KEDVENCEK -->
+<section id="kedvencek">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">4. oldal</span>
+      <h2 class="sec-title">Az 5 kedvenc</h2>
+      <span class="sec-aux">A ház legkeresettebb fogásai</span>
+    </div>
+    <div class="signature-grid reveal-stagger">
+      <div class="sig-card feature">
+        <div class="sig-photo"><img src="images/sig-preferatul.jpg" alt="Misi kedvence — grilltál tarjával, kolbásszal, szalonnával"></div>
+        <div class="sig-body">
+          <div class="sig-rank">1 · A király</div>
+          <h3 class="sig-name">Misi <em>kedvence</em></h3>
+          <p class="sig-desc">Egy fő, egy tál. Grillezett tarja, üvegben sült kolbász, ropogós szalonna, hasábburgonya és párolt káposzta — ez a tál a Misi Csárda kvintesszenciája. Aki először itt eszik, ezt rendeli. Aki tizedszer is, általában ezt.</p>
+          <div class="sig-foot">
+            <span>1 fő · 350 + 200 + 150 g</span>
+            <span class="price">63 lej</span>
+          </div>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-photo"><img src="images/sig-borzoska.jpg" alt="Csirke borzoska — ropogós csirke sajt-szósszal"></div>
+        <div class="sig-body">
+          <div class="sig-rank">2 · A jelölt</div>
+          <h3 class="sig-name">Csirke <em>borzoska</em></h3>
+          <p class="sig-desc">A ház saját receptje — a szakácsaink 2017 óta finomítják. Nem találod meg máshol. Ropogós, fűszeres, csak a Misinél van.</p>
+          <div class="sig-foot"><span>250 g</span><span class="price">43 lej</span></div>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-photo"><img src="images/sig-grill.jpg" alt="Mititei sült burgonyával és friss salátával"></div>
+        <div class="sig-body">
+          <div class="sig-rank">3 · A klasszikus</div>
+          <h3 class="sig-name">Mititei <em>tál</em></h3>
+          <p class="sig-desc">Mititei, hasábburgonya, friss saláta, házi kenyér — az erdélyi délután elmaradhatatlan tála. Egy adag mellé sör jár, kettő mellé Csíki.</p>
+          <div class="sig-foot"><span>250 g + köret</span><span class="price">22 lej / db</span></div>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-photo"><img src="images/sig-ciorba.jpg" alt="Erdélyi savanyúleves — kockás abrosz, kenyér, tejföl"></div>
+        <div class="sig-body">
+          <div class="sig-rank">4 · Az alap</div>
+          <h3 class="sig-name">Erdélyi <em>savanyúleves</em></h3>
+          <p class="sig-desc">Erdélyi savanykás leves, tejföllel és házi kenyérrel. Téli este nincs jobb. Nyári melegben nincs frissítőbb.</p>
+          <div class="sig-foot"><span>350 + 50 g</span><span class="price">22 lej</span></div>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-photo"><img src="images/sig-pizza.jpg" alt="Misi pizza — csípős szalámi, paprika, hagyma, kukorica, mozzarella"></div>
+        <div class="sig-body">
+          <div class="sig-rank">5 · A pizza</div>
+          <h3 class="sig-name">Misi <em>pizza</em></h3>
+          <p class="sig-desc">Sonka, csípős szalámi, hagyma, paprika, kukorica, mozzarella — az olasz alapra erdélyi karaktert tettünk. Tűzkemencében sütve.</p>
+          <div class="sig-foot"><span>650 g</span><span class="price">43 lej</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ITALOK · SÖTÉT -->
+<section class="dark" id="italok">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">5. oldal</span>
+      <h2 class="sec-title">Italok</h2>
+      <span class="sec-aux">Borok · Pálinka · Csíki Sör</span>
+    </div>
+    <div class="drinks-grid reveal-stagger">
+      <div class="drink-col">
+        <h3>Borok — Purcari &amp; Cricova<em>Erdélyi és moldvai pincékből</em></h3>
+        <div class="drink-row"><div class="nm">Purcari Nocturne Chardonnay<span class="vol">0,75 l · száraz fehér</span></div><span class="pr">108 lej</span></div>
+        <div class="drink-row"><div class="nm">Purcari Nocturne Cabernet<span class="vol">0,75 l · száraz vörös</span></div><span class="pr">108 lej</span></div>
+        <div class="drink-row"><div class="nm">Cricova Fetească Neagră<span class="vol">0,75 l · száraz vörös</span></div><span class="pr">122 lej</span></div>
+        <div class="drink-row"><div class="nm">Cricova Viorica<span class="vol">0,75 l · száraz fehér</span></div><span class="pr">123 lej</span></div>
+        <div class="drink-row"><div class="nm">Villa Vinea Sauv. Blanc<span class="vol">0,75 l · száraz fehér</span></div><span class="pr">76 lej</span></div>
+        <div class="drink-row"><div class="nm">Tokaji Furmint<span class="vol">0,75 l · félédes</span></div><span class="pr">43 lej</span></div>
+        <div class="drink-row"><div class="nm">Tokaji Szamorodni<span class="vol">0,5 l · édes</span></div><span class="pr">72 lej</span></div>
+      </div>
+      <div class="drink-col">
+        <h3>Pálinkák &amp; rövidek<em>Glodeni-i pálinka és klasszikusok</em></h3>
+        <div class="drink-row"><div class="nm">Glodeni-i pálinka<span class="vol">szilva · körte · 40 ml</span></div><span class="pr">7 lej</span></div>
+        <div class="drink-row"><div class="nm">Glodeni-i prémium málnapálinka<span class="vol">40 ml</span></div><span class="pr">20 lej</span></div>
+        <div class="drink-row"><div class="nm">Glodeni-i birs · eper · bodza<span class="vol">pálinka · 40 ml</span></div><span class="pr">12 lej</span></div>
+        <div class="drink-row"><div class="nm">Unicum<span class="vol">35% · 40 ml</span></div><span class="pr">12 lej</span></div>
+        <div class="drink-row"><div class="nm">Jägermeister<span class="vol">35% · 40 ml</span></div><span class="pr">12 lej</span></div>
+        <div class="drink-row"><div class="nm">Hennessy V.S.<span class="vol">konyak · 40 ml</span></div><span class="pr">22 lej</span></div>
+        <div class="drink-row"><div class="nm">Jack Daniel's · Bombay · Absolut<span class="vol">whiskey · gin · vodka · 40 ml</span></div><span class="pr">12 lej</span></div>
+      </div>
+      <div class="drink-col">
+        <h3>Sör &amp; üdítők<em>Heineken · Csíki · Coca</em></h3>
+        <div class="drink-row"><div class="nm">Tiltott Csíki Sör<span class="vol">0,5 l · 6% · erdélyi</span></div><span class="pr">11 lej</span></div>
+        <div class="drink-row"><div class="nm">Tiltott Csíki „Vadmálna" Radler<span class="vol">0,5 l · 1,2% · vadmálna</span></div><span class="pr">14 lej</span></div>
+        <div class="drink-row"><div class="nm">Heineken csapolt<span class="vol">0,4 l · 5%</span></div><span class="pr">14 lej</span></div>
+        <div class="drink-row"><div class="nm">Birra Moretti<span class="vol">0,5 l · 4,6%</span></div><span class="pr">12 lej</span></div>
+        <div class="drink-row"><div class="nm">Limonádé mentával / gyömbérrel<span class="vol">friss limonádé · 330 ml</span></div><span class="pr">15 — 16 lej</span></div>
+        <div class="drink-row"><div class="nm">Coca Cola · Sprite · Fanta<span class="vol">üveges · 250 ml</span></div><span class="pr">10 lej</span></div>
+        <div class="drink-row"><div class="nm">Dorna ásványvíz<span class="vol">szénsavas / sima · 0,33 / 0,75 l</span></div><span class="pr">8 — 14 lej</span></div>
+      </div>
+    </div>
+    <div class="csiki-feat reveal">
+      <div>
+        <div class="csiki-feat-label">A ház büszkesége — erdélyi sör</div>
+        <h3 class="csiki-feat-name">Tiltott Igazi <em style="font-style:italic;color:var(--paper);">Csíki Sör</em></h3>
+        <p class="csiki-feat-desc">A csíki sörfőzde tisztán erdélyi alapanyagokból főz — házilag, hagyományos élesztővel. Húsos fogás mellé kötelező. Mert ami ott terem, azt isszuk.</p>
+      </div>
+      <div class="csiki-meta">
+        <b>11 lej</b>
+        0,5 liter · 6%<br>
+        Tiltott Csíki Sörfőzde<br>
+        Csíkszentsimon · Hargita
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENDÉGEKÉRT -->
+<section class="events-section" id="vendegekert">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">6. oldal</span>
+      <h2 class="sec-title">A vendégekért</h2>
+      <span class="sec-aux">Csoportok · Esküvők · Céges · Születésnap</span>
+    </div>
+    <div class="events-grid">
+      <div class="events-text reveal">
+        <div class="events-eyebrow">Külön rendezvényterem</div>
+        <h2 class="events-h2">A nagy <em>terem</em> a tiéd lehet.</h2>
+        <p class="events-lead">A Misi Csárda külön <b>rendezvényterme</b> 60 főt is befogad — hosszú asztalokkal, magas fa-gerendás tetővel, hangosítással és külön bejárattal. Tiéd az egész tér: tiéd a hangulat is.</p>
+        <ul class="events-list">
+          <li><b>Esküvő</b><span>Polgári + vacsora · 60 főig · külön teremmel · ünnepi terítéssel</span></li>
+          <li><b>Születésnap</b><span>Lufidíszítés · gyermekmenü · torta-szervezés intézve</span></li>
+          <li><b>Céges</b><span>Csapatépítő · év-záró vacsora · tálválaszték 8–30 főre</span></li>
+          <li><b>Évforduló</b><span>Pár-asztal · ünnepi menü · külön desszert ajándékba</span></li>
+          <li><b>Csoport · 10 fő felett</b><span>Telefonos foglalás kötelező · külön hosszú asztal · egyeztetett menü</span></li>
+        </ul>
+        <p style="margin-top:24px;font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;color:var(--ink-deep);border-left:3px solid var(--hu-red);padding-left:18px;">„Akinek 60 fő jön át vacsorára, az nem felejti el — sem mi, sem ti." — a séf</p>
+        <a href="#foglalas" class="btn btn-primary" style="margin-top:24px;">Csoportos foglalás</a>
+      </div>
+      <div class="events-photos reveal">
+        <div data-cap="A · Nagy terem"><img src="images/interior-hall.jpg" alt="A rendezvényterem — magas fa-gerendás tető, hosszú asztal"></div>
+        <div data-cap="B · Születésnap"><img src="images/event-birthday.jpg" alt="Születésnapi terítés lufikkal és asztal-szalagokkal"></div>
+        <div data-cap="C · Elegáns terítés"><img src="images/interior-table.jpg" alt="Elegáns belső terítés népi mintával és lámpással"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALÉRIA -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">7. oldal</span>
+      <h2 class="sec-title">Galéria</h2>
+      <span class="sec-aux">Fotó-rovat · vendégek és konyha</span>
+    </div>
+    <div class="gal-grid reveal-stagger">
+      <div class="gal-tile feature"><img src="images/people-event.jpg" alt="Vendégek a Misi Csárdában"><span class="tile-stamp">A</span><span class="tile-cap">A nagy ház · élő hangulat</span></div>
+      <div class="gal-tile"><img src="images/burger-double.jpg" alt="Két burger fa-tálcán"><span class="tile-stamp">B</span><span class="tile-cap">Burger közelről</span></div>
+      <div class="gal-tile"><img src="images/coffee-meinl.jpg" alt="Julius Meinl cappuccino"><span class="tile-stamp">C</span><span class="tile-cap">Julius Meinl latte art</span></div>
+      <div class="gal-tile"><img src="images/hero-bar.jpg" alt="Bárpult — Csíki Csipsz, kréta-tábla"><span class="tile-stamp">D</span><span class="tile-cap">Bárpult — Csíki Csipsz</span></div>
+      <div class="gal-tile"><img src="images/burger-interior.jpg" alt="Burger a Caffè & Wine bárpultnál"><span class="tile-stamp">E</span><span class="tile-cap">Burger a bárnál</span></div>
+      <div class="gal-tile"><img src="images/sig-tarja.jpg" alt="Tarja kockás abroszon"><span class="tile-stamp">F</span><span class="tile-cap">Tarja · kockás abrosz</span></div>
+      <div class="gal-tile"><img src="images/sig-grill.jpg" alt="Mititei tál friss salátával"><span class="tile-stamp">G</span><span class="tile-cap">Mititei + saláta</span></div>
+      <div class="gal-tile"><img src="images/sig-ciorba.jpg" alt="Erdélyi savanyúleves kockás abroszon"><span class="tile-stamp">H</span><span class="tile-cap">Erdélyi savanyúleves</span></div>
+      <div class="gal-tile"><img src="images/sig-pizza.jpg" alt="Misi pizza"><span class="tile-stamp">I</span><span class="tile-cap">Misi pizza</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOGLALÁS -->
+<section class="booking-section" id="foglalas">
+  <div class="wrap">
+    <div class="booking-grid">
+      <div class="reveal">
+        <div class="booking-eyebrow">Levél a szerkesztőhöz</div>
+        <h2 class="booking-h2">Foglalj asztalt — <em>tartjuk neked.</em></h2>
+        <p class="booking-lead">A Misi Csárdában nincs futószalag — minden vendég egyedi, minden asztal előre egyeztetett. Töltsd ki az alábbi „levelet", és 2 órán belül visszahívunk megerősítésért.</p>
+        <div class="booking-meta">
+          <div>
+            <b>Telefon</b>
+            <span>+40 265 333 444</span>
+          </div>
+          <div>
+            <b>E-mail</b>
+            <span>mispetbradul@gmail.com</span>
+          </div>
+          <div>
+            <b>Csoportos foglalás</b>
+            <span>10 fő felett külön asztal · ünnepi menü egyeztetése</span>
+          </div>
+          <div>
+            <b>Rendezvény-szervezés</b>
+            <span>Esküvő · ballagás · születésnap · céges</span>
+          </div>
+        </div>
+      </div>
+      <form class="booking-form reveal" name="foglalas" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="foglalas">
+        <div class="form-banner">
+          <span>Misi Újság · Foglalási űrlap</span>
+          <span>12. kiadás</span>
+        </div>
+        <h3 class="form-title">Levél a szerkesztőhöz</h3>
+        <p class="form-sub">Töltsd ki, és 2 órán belül visszacsengetünk megerősítésért.</p>
+        <div class="form-row">
+          <div class="form-field"><label for="nev">Név</label><input id="nev" name="nev" type="text" required placeholder="Pl. Kovács Andrea"></div>
+          <div class="form-field"><label for="telefon">Telefon</label><input id="telefon" name="telefon" type="tel" required placeholder="+40 ..."></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="datum">Dátum</label><input id="datum" name="datum" type="date" required></div>
+          <div class="form-field"><label for="ora">Időpont</label><input id="ora" name="ora" type="time" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="letszam">Létszám</label><select id="letszam" name="letszam" required><option value="">Válassz…</option><option>2 fő</option><option>3 fő</option><option>4 fő</option><option>5 fő</option><option>6 fő</option><option>7 fő</option><option>8 fő</option><option>10 fő felett · csoport</option></select></div>
+          <div class="form-field"><label for="alkalom">Alkalom</label><select id="alkalom" name="alkalom"><option>Nincs különleges</option><option>Születésnap</option><option>Évforduló</option><option>Üzleti ebéd</option><option>Családi vacsora</option><option>Esküvő-előkészítés</option></select></div>
+        </div>
+        <div class="form-row full">
+          <div class="form-field"><label for="uzenet">Üzenet (allergia, kérés)</label><textarea id="uzenet" name="uzenet" placeholder="Pl. ablakhoz közeli asztal, gluténérzékeny vendég, gyerekszék"></textarea></div>
+        </div>
+        <button class="btn btn-primary form-submit" type="submit">Foglalás elküldése</button>
+        <p class="form-foot">Nyitva tartás: H–Szo · 07:00 — 22:00 · Vasárnap · 09:00 — 21:00</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- KAPCSOLAT -->
+<section class="contact-section" id="kontakt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">9. oldal</span>
+      <h2 class="sec-title">Kapcsolat &amp; térkép</h2>
+      <span class="sec-aux">Marosszentgyörgy · Erdély utca 224/A</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-block">
+          <h3>Cím és telefon</h3>
+          <div class="contact-row"><b>Cím</b><span>Erdély utca 224/A<br>Marosszentgyörgy 547530<br>Maros megye, Románia</span></div>
+          <div class="contact-row"><b>Telefon</b><span><a href="tel:+40265333444">+40 265 333 444</a></span></div>
+          <div class="contact-row"><b>E-mail</b><span><a href="mailto:mispetbradul@gmail.com">mispetbradul@gmail.com</a></span></div>
+        </div>
+        <div class="contact-block">
+          <h3>Nyitva tartás</h3>
+          <div class="contact-row"><b>Hétfő–Szombat</b><span>07:00 — 22:00</span></div>
+          <div class="contact-row"><b>Vasárnap</b><span>09:00 — 21:00</span></div>
+        </div>
+        <div class="contact-block">
+          <h3>Kövess minket</h3>
+          <div class="contact-row"><b>Facebook</b><span><a href="https://www.facebook.com/restaurantmisi" target="_blank" rel="noopener">facebook.com/restaurantmisi</a></span></div>
+          <div class="contact-row"><b>Instagram</b><span><a href="https://www.instagram.com/restaurantmisi/" target="_blank" rel="noopener">@restaurantmisi</a></span></div>
+        </div>
+      </div>
+      <div class="map-card reveal">
+        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2735.4012!2d24.6214899!3d46.5901264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474bb5b816defccf%3A0x30c435836d1491ea!2sRestaurant%20Misi%20Cs%C3%A1rda!5e0!3m2!1shu!2sro!4v1714000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-caption">
+          <span>Térképen · Marosszentgyörgy</span>
+          <span>GPS 46,59° É · 24,62° K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LÁBLÉC -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="f-seal"><img src="logo.png" alt="Misi Csárda"></div>
+      <p><b style="color:var(--paper);font-style:italic">Misi Csárda · 2016 óta</b><br>Autentikus erdélyi és magyaros konyha · Marosszentgyörgyön. „Aki enni tud, várni is tud."</p>
+    </div>
+    <div class="footer-col">
+      <h4>Az újság</h4>
+      <a href="#tortenet">Történet</a>
+      <a href="#etlap">Étlap</a>
+      <a href="#kedvencek">Kedvencek</a>
+      <a href="#italok">Italok</a>
+      <a href="#vendegekert">Vendégekért</a>
+      <a href="#galeria">Galéria</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kapcsolat</h4>
+      <a href="tel:+40265333444">+40 265 333 444</a>
+      <a href="mailto:mispetbradul@gmail.com">E-mail küldése</a>
+      <a href="#foglalas">Asztalt foglalok</a>
+      <a href="#kontakt">Térkép</a>
+    </div>
+    <div class="footer-col">
+      <h4>Közösség</h4>
+      <a href="https://www.facebook.com/restaurantmisi" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/restaurantmisi/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://maps.app.goo.gl/DYE6NhwZPvrjvgAGA" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Misi Csárda · Minden jog fenntartva</span>
+    <span>Misi Újság · 12. kiadás · 2026. április</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+  // LENIS
+  const lenis = new Lenis({duration:1.2,smoothWheel:true,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t))});
+  function raf(time){lenis.raf(time);requestAnimationFrame(raf)}
+  requestAnimationFrame(raf);
+
+  // ANCHOR LINKS through Lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',(e)=>{
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();lenis.scrollTo(t,{offset:-72,duration:1.4})}
+    });
+  });
+
+  // OLDALSÓ NAV — láthatóság + aktív szakasz követés
+  const sideNav = document.getElementById('sideNav');
+  const sideLinks = sideNav.querySelectorAll('a[data-section]');
+  const sectionIds = Array.from(sideLinks).map(a => a.dataset.section).filter(s => s !== 'top');
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function updateSideNav(scroll){
+    if(scroll > 400) sideNav.classList.add('visible');
+    else sideNav.classList.remove('visible');
+
+    // Aktív szakasz: az utolsó, ami már a viewport felső 40%-ába került
+    const triggerY = scroll + window.innerHeight * 0.4;
+    let activeId = null;
+    for(const sec of sections){
+      if(sec.offsetTop <= triggerY) activeId = sec.id;
+    }
+    sideLinks.forEach(a => {
+      if(a.dataset.section === activeId) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  }
+  lenis.on('scroll', ({scroll}) => updateSideNav(scroll));
+  updateSideNav(window.scrollY || 0);
+
+  // BURGER
+  const burger = document.getElementById('burger');
+  const navMenu = document.getElementById('navMenu');
+  burger.addEventListener('click',()=>{
+    navMenu.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navMenu.classList.remove('open')));
+
+  // REVEAL
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+
+  // MENU TABS
+  document.querySelectorAll('.menu-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const t = tab.dataset.tab;
+      document.querySelectorAll('.menu-tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(x=>x.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.menu-panel[data-panel="${t}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
