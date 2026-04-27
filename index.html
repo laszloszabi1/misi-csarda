@@ -1102,6 +1102,15 @@
       else a.classList.remove('active');
     });
   }
+  // MOBIL SCROLL-TO-TOP GOMB
+  const mobileTop = document.getElementById('mobileTop');
+  function updateMobileTop(scroll){
+    if(!mobileTop) return;
+    if(scroll > 600) mobileTop.classList.add('visible');
+    else mobileTop.classList.remove('visible');
+  }
+
+  // SCROLL-LISTENER (csak miután minden ref készen van)
   lenis.on('scroll', ({scroll}) => {
     updateSideNav(scroll);
     updateMobileTop(scroll);
@@ -1135,13 +1144,6 @@
   document.addEventListener('keydown',(e)=>{
     if(e.key==='Escape' && navMenu.classList.contains('open')) closeMobileMenu();
   });
-
-  // MOBIL SCROLL-TO-TOP GOMB láthatóság
-  const mobileTop = document.getElementById('mobileTop');
-  function updateMobileTop(scroll){
-    if(scroll > 600) mobileTop.classList.add('visible');
-    else mobileTop.classList.remove('visible');
-  }
 
   // REVEAL
   const io = new IntersectionObserver((entries)=>{
